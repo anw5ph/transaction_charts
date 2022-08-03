@@ -1,0 +1,108 @@
+<html>
+<head>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vis-network@latest/styles/vis-network.css" type="text/css" />
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vis-network@latest/dist/vis-network.min.js"> </script>
+<center>
+<h1></h1>
+</center>
+
+<!-- <link rel="stylesheet" href="../node_modules/vis/dist/vis.min.css" type="text/css" />
+<script type="text/javascript" src="../node_modules/vis/dist/vis.js"> </script>-->
+
+<style type="text/css">
+
+        #mynetwork {
+            width: 100%;
+            height: 750px;
+            background-color: #ffffff;
+            border: 1px solid lightgray;
+            position: relative;
+            float: left;
+        }
+
+        
+
+        
+
+        
+</style>
+
+</head>
+
+<body>
+<div id = "mynetwork"></div>
+
+
+<script type="text/javascript">
+
+    // initialize global variables.
+    var edges;
+    var nodes;
+    var network; 
+    var container;
+    var options, data;
+
+    
+    // This method is responsible for drawing the graph, returns the drawn network
+    function drawGraph() {
+        var container = document.getElementById('mynetwork');
+        
+        
+
+        // parsing and collecting nodes and edges from the python
+        nodes = new vis.DataSet([{"group": 0, "id": "\\x888fb2d3e210fd2977299a970e9458f110e81cff", "label": "\\x888fb2d3e210fd2977299a970e9458f110e81cff", "shape": "dot", "title": "\\x888fb2d3e210fd2977299a970e9458f110e81cff", "value": 1}, {"group": 0, "id": "\\x7db17ed99c4bc38b07aeb1fb134491dd667e4bcb", "label": "\\x7db17ed99c4bc38b07aeb1fb134491dd667e4bcb", "shape": "dot", "title": "\\x7db17ed99c4bc38b07aeb1fb134491dd667e4bcb", "value": 0}, {"group": 0, "id": "\\x46340b20830761efd32832a74d7169b29feb9758", "label": "\\x46340b20830761efd32832a74d7169b29feb9758", "shape": "dot", "title": "\\x46340b20830761efd32832a74d7169b29feb9758", "value": 2}, {"group": 0, "id": "\\xe2b4aa2bf64229e7d27662e50c0291db5839694f", "label": "\\xe2b4aa2bf64229e7d27662e50c0291db5839694f", "shape": "dot", "title": "\\xe2b4aa2bf64229e7d27662e50c0291db5839694f", "value": 0}, {"group": 0, "id": "\\x77696bb39917c91a0c3908d577d5e322095425ca", "label": "\\x77696bb39917c91a0c3908d577d5e322095425ca", "shape": "dot", "title": "\\x77696bb39917c91a0c3908d577d5e322095425ca", "value": 13}, {"group": 0, "id": "\\x6cd7a2d67f3fc733a21724a1c2d3dad3c101073c", "label": "\\x6cd7a2d67f3fc733a21724a1c2d3dad3c101073c", "shape": "dot", "title": "\\x6cd7a2d67f3fc733a21724a1c2d3dad3c101073c", "value": 0}, {"group": 0, "id": "\\x4ba4e09439834675fd311ece683199ba75f1be4d", "label": "\\x4ba4e09439834675fd311ece683199ba75f1be4d", "shape": "dot", "title": "\\x4ba4e09439834675fd311ece683199ba75f1be4d", "value": 1}, {"group": 0, "id": "\\x32165bf67bff58127d12b80776f143cbe1fac766", "label": "\\x32165bf67bff58127d12b80776f143cbe1fac766", "shape": "dot", "title": "\\x32165bf67bff58127d12b80776f143cbe1fac766", "value": 0}, {"group": 0, "id": "\\xa9d1e08c7793af67e9d92fe308d5697fb81d3e43", "label": "\\xa9d1e08c7793af67e9d92fe308d5697fb81d3e43", "shape": "dot", "title": "\\xa9d1e08c7793af67e9d92fe308d5697fb81d3e43", "value": 3}, {"group": 0, "id": "\\x425f3484c6dacaebd88bba70fb8051efbf01b46f", "label": "\\x425f3484c6dacaebd88bba70fb8051efbf01b46f", "shape": "dot", "title": "\\x425f3484c6dacaebd88bba70fb8051efbf01b46f", "value": 0}, {"group": 0, "id": "\\x6bbc9d30e7a8475fa186649db29a0971fe5c3f82", "label": "\\x6bbc9d30e7a8475fa186649db29a0971fe5c3f82", "shape": "dot", "title": "\\x6bbc9d30e7a8475fa186649db29a0971fe5c3f82", "value": 1}, {"group": 0, "id": "\\xd9ed2b5f292a0e319a04e6c1aca15df97705821c", "label": "\\xd9ed2b5f292a0e319a04e6c1aca15df97705821c", "shape": "dot", "title": "\\xd9ed2b5f292a0e319a04e6c1aca15df97705821c", "value": 0}, {"group": 0, "id": "\\xdb6fdc30ab61c7cca742d4c13d1b035f3f82019a", "label": "\\xdb6fdc30ab61c7cca742d4c13d1b035f3f82019a", "shape": "dot", "title": "\\xdb6fdc30ab61c7cca742d4c13d1b035f3f82019a", "value": 1}, {"group": 0, "id": "\\x9b01b6461424819b353b145787fbf16e5ea2dbc2", "label": "\\x9b01b6461424819b353b145787fbf16e5ea2dbc2", "shape": "dot", "title": "\\x9b01b6461424819b353b145787fbf16e5ea2dbc2", "value": 0}, {"group": 0, "id": "\\x318fbd0a9896f2e14fb07e408f6e628560fbf481", "label": "\\x318fbd0a9896f2e14fb07e408f6e628560fbf481", "shape": "dot", "title": "\\x318fbd0a9896f2e14fb07e408f6e628560fbf481", "value": 0}, {"group": 0, "id": "\\x00000000ae347930bd1e7b0f35588b92280f9e75", "label": "\\x00000000ae347930bd1e7b0f35588b92280f9e75", "shape": "dot", "title": "\\x00000000ae347930bd1e7b0f35588b92280f9e75", "value": 1}, {"group": 0, "id": "\\xef9ea04eae5528c6418a73ed20309a41ad523405", "label": "\\xef9ea04eae5528c6418a73ed20309a41ad523405", "shape": "dot", "title": "\\xef9ea04eae5528c6418a73ed20309a41ad523405", "value": 1}, {"group": 0, "id": "\\x674bdf20a0f284d710bc40872100128e2d66bd3f", "label": "\\x674bdf20a0f284d710bc40872100128e2d66bd3f", "shape": "dot", "title": "\\x674bdf20a0f284d710bc40872100128e2d66bd3f", "value": 0}, {"group": 0, "id": "\\xd8c07491caa1edf960db3ceff387426d53942ea0", "label": "\\xd8c07491caa1edf960db3ceff387426d53942ea0", "shape": "dot", "title": "\\xd8c07491caa1edf960db3ceff387426d53942ea0", "value": 1}, {"group": 0, "id": "\\xba12222222228d8ba445958a75a0704d566bf2c8", "label": "\\xba12222222228d8ba445958a75a0704d566bf2c8", "shape": "dot", "title": "\\xba12222222228d8ba445958a75a0704d566bf2c8", "value": 0}, {"group": 0, "id": "\\xc6b698695258256c4a63d8c072f58c9cee2a0637", "label": "\\xc6b698695258256c4a63d8c072f58c9cee2a0637", "shape": "dot", "title": "\\xc6b698695258256c4a63d8c072f58c9cee2a0637", "value": 0}, {"group": 0, "id": "\\xebb41cce9c21cb048e40f5d843fe3638f8820392", "label": "\\xebb41cce9c21cb048e40f5d843fe3638f8820392", "shape": "dot", "title": "\\xebb41cce9c21cb048e40f5d843fe3638f8820392", "value": 0}, {"group": 0, "id": "\\x82bdff92b259d83382c28a2d0cf3229e0d8b0b98", "label": "\\x82bdff92b259d83382c28a2d0cf3229e0d8b0b98", "shape": "dot", "title": "\\x82bdff92b259d83382c28a2d0cf3229e0d8b0b98", "value": 1}, {"group": 0, "id": "\\xa760c65ee687c854c9f20d90d9e5c7d27eb742b8", "label": "\\xa760c65ee687c854c9f20d90d9e5c7d27eb742b8", "shape": "dot", "title": "\\xa760c65ee687c854c9f20d90d9e5c7d27eb742b8", "value": 0}, {"group": 0, "id": "\\xc02cb7f052d9efb84040f6afb92277df7f8047c0", "label": "\\xc02cb7f052d9efb84040f6afb92277df7f8047c0", "shape": "dot", "title": "\\xc02cb7f052d9efb84040f6afb92277df7f8047c0", "value": 0}, {"group": 0, "id": "\\x48c04ed5691981c42154c6167398f95e8f38a7ff", "label": "\\x48c04ed5691981c42154c6167398f95e8f38a7ff", "shape": "dot", "title": "\\x48c04ed5691981c42154c6167398f95e8f38a7ff", "value": 1}, {"group": 0, "id": "\\xc6478957a612ad28e67e5a8546f7b5d5e23abee9", "label": "\\xc6478957a612ad28e67e5a8546f7b5d5e23abee9", "shape": "dot", "title": "\\xc6478957a612ad28e67e5a8546f7b5d5e23abee9", "value": 0}, {"group": 0, "id": "\\xca18860ba688d07808bc68a363d289695c0f1c63", "label": "\\xca18860ba688d07808bc68a363d289695c0f1c63", "shape": "dot", "title": "\\xca18860ba688d07808bc68a363d289695c0f1c63", "value": 0}, {"group": 0, "id": "\\xe2e7ae67e7ee6d4d90dfef945ab6de6a14db4c17", "label": "\\xe2e7ae67e7ee6d4d90dfef945ab6de6a14db4c17", "shape": "dot", "title": "\\xe2e7ae67e7ee6d4d90dfef945ab6de6a14db4c17", "value": 0}, {"group": 0, "id": "\\xb69c15addc1b774c215334798617c61db6de93f2", "label": "\\xb69c15addc1b774c215334798617c61db6de93f2", "shape": "dot", "title": "\\xb69c15addc1b774c215334798617c61db6de93f2", "value": 0}, {"group": 0, "id": "\\xc16ac054d61ea4f35e981f7c2ca32ae6b2dd0d6e", "label": "\\xc16ac054d61ea4f35e981f7c2ca32ae6b2dd0d6e", "shape": "dot", "title": "\\xc16ac054d61ea4f35e981f7c2ca32ae6b2dd0d6e", "value": 0}, {"group": 0, "id": "\\xb6a9b8cfc044160714754ad2a331437e82dddba7", "label": "\\xb6a9b8cfc044160714754ad2a331437e82dddba7", "shape": "dot", "title": "\\xb6a9b8cfc044160714754ad2a331437e82dddba7", "value": 0}, {"group": 0, "id": "\\x379f1e87c17b88ddcad1a553a3fb7045a94fe03b", "label": "\\x379f1e87c17b88ddcad1a553a3fb7045a94fe03b", "shape": "dot", "title": "\\x379f1e87c17b88ddcad1a553a3fb7045a94fe03b", "value": 0}, {"group": 0, "id": "\\x7d4bf9c765fc2176eb480f2cdce1370ac2908c9f", "label": "\\x7d4bf9c765fc2176eb480f2cdce1370ac2908c9f", "shape": "dot", "title": "\\x7d4bf9c765fc2176eb480f2cdce1370ac2908c9f", "value": 0}, {"group": 0, "id": "\\x33566c9d8be6cf0b23795e0d380e112be9d75836", "label": "\\x33566c9d8be6cf0b23795e0d380e112be9d75836", "shape": "dot", "title": "\\x33566c9d8be6cf0b23795e0d380e112be9d75836", "value": 1}, {"group": 0, "id": "\\xb9c3832e688736ed8c8954d158cb6b00fca6c8f2", "label": "\\xb9c3832e688736ed8c8954d158cb6b00fca6c8f2", "shape": "dot", "title": "\\xb9c3832e688736ed8c8954d158cb6b00fca6c8f2", "value": 0}, {"group": 0, "id": "\\x913add8f7b70f8aec342d80e3bc2fd33fc92e91d", "label": "\\x913add8f7b70f8aec342d80e3bc2fd33fc92e91d", "shape": "dot", "title": "\\x913add8f7b70f8aec342d80e3bc2fd33fc92e91d", "value": 0}, {"group": 0, "id": "\\x3f7b56d744125d92537d2f6f3332b2168ff39613", "label": "\\x3f7b56d744125d92537d2f6f3332b2168ff39613", "shape": "dot", "title": "\\x3f7b56d744125d92537d2f6f3332b2168ff39613", "value": 1}, {"group": 0, "id": "\\xc03f7a738bc8325cc0b376369e72442132a6368c", "label": "\\xc03f7a738bc8325cc0b376369e72442132a6368c", "shape": "dot", "title": "\\xc03f7a738bc8325cc0b376369e72442132a6368c", "value": 1}, {"group": 0, "id": "\\x457715f37e9598a9ca097901f60934908590f68e", "label": "\\x457715f37e9598a9ca097901f60934908590f68e", "shape": "dot", "title": "\\x457715f37e9598a9ca097901f60934908590f68e", "value": 0}, {"group": 0, "id": "\\xe502e66be52806bcc60f602e0b5e39c575325cee", "label": "\\xe502e66be52806bcc60f602e0b5e39c575325cee", "shape": "dot", "title": "\\xe502e66be52806bcc60f602e0b5e39c575325cee", "value": 1}, {"group": 0, "id": "\\x3cc936b795a188f0e246cbb2d74c5bd190aecf18", "label": "\\x3cc936b795a188f0e246cbb2d74c5bd190aecf18", "shape": "dot", "title": "\\x3cc936b795a188f0e246cbb2d74c5bd190aecf18", "value": 0}, {"group": 0, "id": "\\x9f920bb8c148971b6550a2003883d1e8a806eb6c", "label": "\\x9f920bb8c148971b6550a2003883d1e8a806eb6c", "shape": "dot", "title": "\\x9f920bb8c148971b6550a2003883d1e8a806eb6c", "value": 0}, {"group": 0, "id": "\\xca0f5aa140c5c62e36a98beda6a8dd470c4f5d87", "label": "\\xca0f5aa140c5c62e36a98beda6a8dd470c4f5d87", "shape": "dot", "title": "\\xca0f5aa140c5c62e36a98beda6a8dd470c4f5d87", "value": 0}]);
+        edges = new vis.DataSet([{"arrows": "to", "from": "\\x888fb2d3e210fd2977299a970e9458f110e81cff", "to": "\\x7db17ed99c4bc38b07aeb1fb134491dd667e4bcb"}, {"arrows": "to", "from": "\\x46340b20830761efd32832a74d7169b29feb9758", "to": "\\xe2b4aa2bf64229e7d27662e50c0291db5839694f"}, {"arrows": "to", "from": "\\x77696bb39917c91a0c3908d577d5e322095425ca", "to": "\\x6cd7a2d67f3fc733a21724a1c2d3dad3c101073c"}, {"arrows": "to", "from": "\\x4ba4e09439834675fd311ece683199ba75f1be4d", "to": "\\x32165bf67bff58127d12b80776f143cbe1fac766"}, {"arrows": "to", "from": "\\xa9d1e08c7793af67e9d92fe308d5697fb81d3e43", "to": "\\x425f3484c6dacaebd88bba70fb8051efbf01b46f"}, {"arrows": "to", "from": "\\x6bbc9d30e7a8475fa186649db29a0971fe5c3f82", "to": "\\xd9ed2b5f292a0e319a04e6c1aca15df97705821c"}, {"arrows": "to", "from": "\\xdb6fdc30ab61c7cca742d4c13d1b035f3f82019a", "to": "\\x9b01b6461424819b353b145787fbf16e5ea2dbc2"}, {"arrows": "to", "from": "\\x77696bb39917c91a0c3908d577d5e322095425ca", "to": "\\x318fbd0a9896f2e14fb07e408f6e628560fbf481"}, {"arrows": "to", "from": "\\x46340b20830761efd32832a74d7169b29feb9758", "to": "\\x00000000ae347930bd1e7b0f35588b92280f9e75"}, {"arrows": "to", "from": "\\xef9ea04eae5528c6418a73ed20309a41ad523405", "to": "\\x674bdf20a0f284d710bc40872100128e2d66bd3f"}, {"arrows": "to", "from": "\\xd8c07491caa1edf960db3ceff387426d53942ea0", "to": "\\xba12222222228d8ba445958a75a0704d566bf2c8"}, {"arrows": "to", "from": "\\x77696bb39917c91a0c3908d577d5e322095425ca", "to": "\\xc6b698695258256c4a63d8c072f58c9cee2a0637"}, {"arrows": "to", "from": "\\x77696bb39917c91a0c3908d577d5e322095425ca", "to": "\\xebb41cce9c21cb048e40f5d843fe3638f8820392"}, {"arrows": "to", "from": "\\xa9d1e08c7793af67e9d92fe308d5697fb81d3e43", "to": "\\x318fbd0a9896f2e14fb07e408f6e628560fbf481"}, {"arrows": "to", "from": "\\x82bdff92b259d83382c28a2d0cf3229e0d8b0b98", "to": "\\xa760c65ee687c854c9f20d90d9e5c7d27eb742b8"}, {"arrows": "to", "from": "\\x77696bb39917c91a0c3908d577d5e322095425ca", "to": "\\xebb41cce9c21cb048e40f5d843fe3638f8820392"}, {"arrows": "to", "from": "\\x77696bb39917c91a0c3908d577d5e322095425ca", "to": "\\xc02cb7f052d9efb84040f6afb92277df7f8047c0"}, {"arrows": "to", "from": "\\x48c04ed5691981c42154c6167398f95e8f38a7ff", "to": "\\xc6478957a612ad28e67e5a8546f7b5d5e23abee9"}, {"arrows": "to", "from": "\\x77696bb39917c91a0c3908d577d5e322095425ca", "to": "\\xca18860ba688d07808bc68a363d289695c0f1c63"}, {"arrows": "to", "from": "\\x00000000ae347930bd1e7b0f35588b92280f9e75", "to": "\\xe2e7ae67e7ee6d4d90dfef945ab6de6a14db4c17"}, {"arrows": "to", "from": "\\x77696bb39917c91a0c3908d577d5e322095425ca", "to": "\\xb69c15addc1b774c215334798617c61db6de93f2"}, {"arrows": "to", "from": "\\x77696bb39917c91a0c3908d577d5e322095425ca", "to": "\\xc16ac054d61ea4f35e981f7c2ca32ae6b2dd0d6e"}, {"arrows": "to", "from": "\\x77696bb39917c91a0c3908d577d5e322095425ca", "to": "\\xb6a9b8cfc044160714754ad2a331437e82dddba7"}, {"arrows": "to", "from": "\\x77696bb39917c91a0c3908d577d5e322095425ca", "to": "\\x379f1e87c17b88ddcad1a553a3fb7045a94fe03b"}, {"arrows": "to", "from": "\\x77696bb39917c91a0c3908d577d5e322095425ca", "to": "\\x7d4bf9c765fc2176eb480f2cdce1370ac2908c9f"}, {"arrows": "to", "from": "\\x33566c9d8be6cf0b23795e0d380e112be9d75836", "to": "\\xb9c3832e688736ed8c8954d158cb6b00fca6c8f2"}, {"arrows": "to", "from": "\\xa9d1e08c7793af67e9d92fe308d5697fb81d3e43", "to": "\\x913add8f7b70f8aec342d80e3bc2fd33fc92e91d"}, {"arrows": "to", "from": "\\x3f7b56d744125d92537d2f6f3332b2168ff39613", "to": "\\xd9ed2b5f292a0e319a04e6c1aca15df97705821c"}, {"arrows": "to", "from": "\\xc03f7a738bc8325cc0b376369e72442132a6368c", "to": "\\x457715f37e9598a9ca097901f60934908590f68e"}, {"arrows": "to", "from": "\\xe502e66be52806bcc60f602e0b5e39c575325cee", "to": "\\x3cc936b795a188f0e246cbb2d74c5bd190aecf18"}, {"arrows": "to", "from": "\\x77696bb39917c91a0c3908d577d5e322095425ca", "to": "\\x9f920bb8c148971b6550a2003883d1e8a806eb6c"}, {"arrows": "to", "from": "\\x77696bb39917c91a0c3908d577d5e322095425ca", "to": "\\xca0f5aa140c5c62e36a98beda6a8dd470c4f5d87"}, {"arrows": "to", "from": "\\x77696bb39917c91a0c3908d577d5e322095425ca", "to": "\\x9f920bb8c148971b6550a2003883d1e8a806eb6c"}]);
+
+        // adding nodes and edges to the graph
+        data = {nodes: nodes, edges: edges};
+
+        var options = {
+    "configure": {
+        "enabled": false
+    },
+    "edges": {
+        "color": {
+            "inherit": true
+        },
+        "smooth": {
+            "enabled": true,
+            "type": "dynamic"
+        }
+    },
+    "interaction": {
+        "dragNodes": true,
+        "hideEdgesOnDrag": false,
+        "hideNodesOnDrag": false
+    },
+    "physics": {
+        "enabled": true,
+        "stabilization": {
+            "enabled": true,
+            "fit": true,
+            "iterations": 1000,
+            "onlyDynamicEdges": false,
+            "updateInterval": 50
+        }
+    }
+};
+        
+        
+
+        
+
+        network = new vis.Network(container, data, options);
+	 
+        
+
+
+        
+
+        return network;
+
+    }
+
+    drawGraph();
+
+</script>
+</body>
+</html>
