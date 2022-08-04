@@ -66,83 +66,59 @@ class Transaction_Graph:
             # Amount transferred
             amnt = e[3]
 
-            if src == r'\x61eb53ee427ab4e007d78a9134aacb3101aadc23':
+            if src == r'\x6021444f1706f15465bee85463bcc7d7cc17fc03':
                 net.add_node(
-                    src, title="SushiSwap: FXS", group=1)
-            elif src == r'\0x278dc748eda1d8efef1adfb518542612b49fcd34':
+                    src, title="Temple Uniswap V2 Pair Contract", group=1)
+            elif src == r'\x9a834b70c07C81a9fcd6f22e842bf002fbffbe4d':
                 net.add_node(
-                    src, title="FraxGaugeFXSRewardsDistributor Contract", group=2)
-            elif src == r'\x1104b4df568fa7af90b1bed1d78a2f71e748dc8a' or src == r'\x3cf54f3a1969be9916dad548f3c084331c4450b5':
+                    src, title="Uniswap V3: FRAX-USDC 3 Contract", group=2)
+            elif src == r'\x8300f0528e00ad33b218bb05d396f61a9fdd68cd':
+                net.add_node(src, title="FraxswapPair", group=3)
+            elif src == r'\x2dce0dda1c2f98e0f171de8333c3c6fe1bbf4877':
+                net.add_node(src, title="Uniswap V2: OHM-FRAX", group=4)
+            elif src == r'\x97c4adc5d28a86f9470c70dd91dc6cc2f20d2d4d':
+                net.add_node(src, title="Uniswap V2: FRAX-USDC 2", group=5)
+            elif src == r'\x8300f0528e00ad33b218bb05d396f61a9fdd68cd':
+                net.add_node(src, title="FraxswapPair Contract", group=6)
+            elif src == r'\xc2a856c3aff2110c1171b8f942256d40e980c726':
+                net.add_node(src, title="Uniswap V3: FRAX-USDT", group=7)
+            elif src == r'\x92c7b5ce4cb0e5483f3365c1449f21578ee9f21a':
+                net.add_node(src, title="Uniswap V3: FRAX", group=8)
+            elif src == r'\x97e7d56a0408570ba1a7852de36350f7713906ec':
+                net.add_node(src, title="Uniswap V3: DAI-FRAX", group=9)
+            elif src == r'\x8ce5796ef6b0c5918025bcf4f9ca908201b030b3':
+                net.add_node(src, title="Uniswap V3: agEUR-FRAX", group=10)
+            elif src == r'\xd632f22692fac7611d2aa1c0d552930d43caed3b':
                 net.add_node(
-                    src, title="TransparentUpgradeableProxy Contract", group=3)
-            elif src == r'\x28120d9d49dbaeb5e34d6b809b842684c482ef27':
-                net.add_node(
-                    src, title="VirtualBalanceRewardPool Contract", group=4)
-            elif src == r'\x4f3ad55d7b884cdc48add1e2451a13af17887f26':
-                net.add_node(src, title="ExtraRewardStashV3 Contract", group=5)
-            elif src == r'\x59cfcd384746ec3035299d90782be065e466800b':
-                net.add_node(src, title="FraxVoterProxy", group=6)
-            elif src == r'\x278dc748eda1d8efef1adfb518542612b49fcd34':
-                net.add_node(
-                    src, title="FraxGaugeFXSRewardsDistributor", group=7)
-            elif src == r'\x35678017e1d252da1cdd6745b147e3e75d1f9c27':
-                net.add_node(
-                    src, title="FraxUnifiedFarm_ERC20_Fraxswap_FRAX_IQ", group=8)
-            elif src == r'\x685b63cfe0179b3efb70a01dcb1d648549aa192d':
-                net.add_node(src, title="AnyswapV5ERC20", group=9)
-            elif src == r'\x61eb53ee427ab4e007d78a9134aacb3101a2dc23':
-                net.add_node(src, title="SushiSwap: FXS", group=10)
-            elif src == r'\xcd8286b48936cdac20518247dbd310ab681a9fbf':
-                net.add_node(src, title="Uniswap V3: FXS 2", group=11)
-            elif src == r'\xc6764e58b36e26b08fd1d2aed4538c02171fa872':
-                net.add_node(src, title="veFXSYieldDistributorV4", group=12)
-            elif src == r'\xc8418af6358ffdda74e09ca9cc3fe03ca6adc5b0':
-                net.add_node(src, title="Frax Finance: veFXS", group=13)
-            elif src == r'\xd658a338613198204dca1143ac3f01a722b5d94a':
-                net.add_node(src, title="Vyper_contract", group=14)
-            elif src == r'\xda2c338350a0e59ce71cdced9679a3a590dd9bec':
-                net.add_node(
-                    src, title="FRAX Finance: Staking FRAX-FXS", group=15)
+                    src, title="Frax FinanceL FRAX3CRV-f Token", group=11)
             else:
                 net.add_node(src, title=src, group=0)
 
-            if tar == r'\x61eb53ee427ab4e007d78a9134aacb3101aadc23':
+            if tar == r'\x6021444f1706f15465bee85463bcc7d7cc17fc03':
                 net.add_node(
-                    tar, title="SushiSwap: FXS", group=1)
-            elif tar == r'\0x278dc748eda1d8efef1adfb518542612b49fcd34':
+                    tar, title="Temple Uniswap V2 Pair Contract", group=1)
+            elif tar == r'\x9a834b70c07C81a9fcd6f22e842bf002fbffbe4d':
                 net.add_node(
-                    tar, title="FraxGaugeFXSRewardsDistributor Contract", group=2)
-            elif tar == r'\x1104b4df568fa7af90b1bed1d78a2f71e748dc8a' or tar == r'\x3cf54f3a1969be9916dad548f3c084331c4450b5':
+                    tar, title="Uniswap V3: FRAX-USDC 3 Contract", group=2)
+            elif tar == r'\x8300f0528e00ad33b218bb05d396f61a9fdd68cd':
+                net.add_node(tar, title="FraxswapPair", group=3)
+            elif tar == r'\x2dce0dda1c2f98e0f171de8333c3c6fe1bbf4877':
+                net.add_node(tar, title="Uniswap V2: OHM-FRAX", group=4)
+            elif tar == r'\x97c4adc5d28a86f9470c70dd91dc6cc2f20d2d4d':
+                net.add_node(tar, title="Uniswap V2: FRAX-USDC 2", group=5)
+            elif tar == r'\x8300f0528e00ad33b218bb05d396f61a9fdd68cd':
+                net.add_node(tar, title="FraxswapPair Contract", group=6)
+            elif tar == r'\xc2a856c3aff2110c1171b8f942256d40e980c726':
+                net.add_node(tar, title="Uniswap V3: FRAX-USDT", group=7)
+            elif tar == r'\x92c7b5ce4cb0e5483f3365c1449f21578ee9f21a':
+                net.add_node(tar, title="Uniswap V3: FRAX", group=8)
+            elif tar == r'\x97e7d56a0408570ba1a7852de36350f7713906ec':
+                net.add_node(tar, title="Uniswap V3: DAI-FRAX", group=9)
+            elif tar == r'\x8ce5796ef6b0c5918025bcf4f9ca908201b030b3':
+                net.add_node(tar, title="Uniswap V3: agEUR-FRAX", group=10)
+            elif tar == r'\xd632f22692fac7611d2aa1c0d552930d43caed3b':
                 net.add_node(
-                    tar, title="TransparentUpgradeableProxy Contract", group=3)
-            elif tar == r'\x28120d9d49dbaeb5e34d6b809b842684c482ef27':
-                net.add_node(
-                    tar, title="VirtualBalanceRewardPool Contract", group=4)
-            elif tar == r'\x4f3ad55d7b884cdc48add1e2451a13af17887f26':
-                net.add_node(tar, title="ExtraRewardStashV3 Contract", group=5)
-            elif tar == r'\x59cfcd384746ec3035299d90782be065e466800b':
-                net.add_node(tar, title="FraxVoterProxy", group=6)
-            elif tar == r'\x278dc748eda1d8efef1adfb518542612b49fcd34':
-                net.add_node(
-                    tar, title="FraxGaugeFXSRewardsDistributor", group=7)
-            elif tar == r'\x35678017e1d252da1cdd6745b147e3e75d1f9c27':
-                net.add_node(
-                    tar, title="FraxUnifiedFarm_ERC20_Fraxswap_FRAX_IQ", group=8)
-            elif tar == r'\x685b63cfe0179b3efb70a01dcb1d648549aa192d':
-                net.add_node(tar, title="AnyswapV5ERC20", group=9)
-            elif tar == r'\x61eb53ee427ab4e007d78a9134aacb3101a2dc23':
-                net.add_node(tar, title="SushiSwap: FXS", group=10)
-            elif tar == r'\xcd8286b48936cdac20518247dbd310ab681a9fbf':
-                net.add_node(tar, title="Uniswap V3: FXS 2", group=11)
-            elif tar == r'\xc6764e58b36e26b08fd1d2aed4538c02171fa872':
-                net.add_node(tar, title="veFXSYieldDistributorV4", group=12)
-            elif tar == r'\xc8418af6358ffdda74e09ca9cc3fe03ca6adc5b0':
-                net.add_node(tar, title="Frax Finance: veFXS", group=13)
-            elif tar == r'\xd658a338613198204dca1143ac3f01a722b5d94a':
-                net.add_node(tar, title="Vyper_contract", group=14)
-            elif tar == r'\xda2c338350a0e59ce71cdced9679a3a590dd9bec':
-                net.add_node(
-                    tar, title="FRAX Finance: Staking FRAX-FXS", group=15)
+                    tar, title="Frax FinanceL FRAX3CRV-f Token", group=11)
             else:
                 net.add_node(tar, title=tar, group=0)
 
