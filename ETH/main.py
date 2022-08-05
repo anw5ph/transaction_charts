@@ -41,17 +41,17 @@ digraph = tg.create_graph(lines)
 # Read data in from csv and seperate data
 data = pd.read_csv('eth_trans_data_1block_080522.csv')
 net1 = tg.create_pyvis_graph(data)
-net2 = tg.create_pyvis_graph_minus(
-    data, [r'\xf403c135812408bfbe8713b5a23a04b3d48aae31', r'\x989aeb4d175e16225e39e87d0d97a3360524ad80', r'\x8301ae4fc9c624d1d396cbdaa1ed877821d7c511', r'\x3fe65692bfcd0e6cf84cb1e7d24108e434a7587e', r'\x0000000000000000000000000000000000000000',
-           r'\xcf50b810e57ac33b91dcf525c6ddd9881b139332', r'\x22f9dcf4647084d6c31b2765f6910cd85c178c18', r'\xad84693a21e0a1db73ae6c6e5aceb041a6c8b6b3', r'\x3cf54f3a1969be9916dad548f3c084331c4450b5', r'\x000000000dfde7deaf24138722987c9a6991e2d4',
-           r'\xbeefbabeea323f07c59926295205d3b7a17e8638', r'\x7e880867363a7e321f5d260cade2b0bb2f717b02', r'\x9d5c5e364d81dab193b72db9e9be9d8ee669b652', r'\x085a2054c51ea5c91dbf7f90d65e728c0f2a270f', r'\xb900ef131301b307db5efcbed9dbb50a3e209b2e',
-           r'\x835f69e58087e5b6bffef182fe2bf959fe253c3c', r'\x0392321e86f42c2f94fbb0c6853052487db521f0', r'\x58dc5a51fe44589beb22e8ce67720b5bc5378009', r'\xf2f400c138f9fb900576263af0bc7fcde2b1b8a8', r'\x28c6c06298d514db089934071355e5743bf21d60',
-           r'\x919fa96e88d67499339577fa202345436bcdaf79', r'\x9445bd19767f73dcae6f2de90e6cd31192f62589'
-           ])
+# net2 = tg.create_pyvis_graph_minus(
+#     data, [r'\xf403c135812408bfbe8713b5a23a04b3d48aae31', r'\x989aeb4d175e16225e39e87d0d97a3360524ad80', r'\x8301ae4fc9c624d1d396cbdaa1ed877821d7c511', r'\x3fe65692bfcd0e6cf84cb1e7d24108e434a7587e', r'\x0000000000000000000000000000000000000000',
+#            r'\xcf50b810e57ac33b91dcf525c6ddd9881b139332', r'\x22f9dcf4647084d6c31b2765f6910cd85c178c18', r'\xad84693a21e0a1db73ae6c6e5aceb041a6c8b6b3', r'\x3cf54f3a1969be9916dad548f3c084331c4450b5', r'\x000000000dfde7deaf24138722987c9a6991e2d4',
+#            r'\xbeefbabeea323f07c59926295205d3b7a17e8638', r'\x7e880867363a7e321f5d260cade2b0bb2f717b02', r'\x9d5c5e364d81dab193b72db9e9be9d8ee669b652', r'\x085a2054c51ea5c91dbf7f90d65e728c0f2a270f', r'\xb900ef131301b307db5efcbed9dbb50a3e209b2e',
+#            r'\x835f69e58087e5b6bffef182fe2bf959fe253c3c', r'\x0392321e86f42c2f94fbb0c6853052487db521f0', r'\x58dc5a51fe44589beb22e8ce67720b5bc5378009', r'\xf2f400c138f9fb900576263af0bc7fcde2b1b8a8', r'\x28c6c06298d514db089934071355e5743bf21d60',
+#            r'\x919fa96e88d67499339577fa202345436bcdaf79', r'\x9445bd19767f73dcae6f2de90e6cd31192f62589'
+#            ])
 
 # Show the graph
 net1.show("eth_trans_data_1block_080522.html")
-net2.show("eth_trans_data_1block_minus_dex_080522.html")
+# net2.show("eth_trans_data_1block_minus_dex_080522.html")
 
 # Gets the frequencies of from addresses, to addresses, and both
 from_addy, to_addy, all_addy = tg.freq_of_addresses(lines)
