@@ -1,0 +1,108 @@
+<html>
+<head>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vis-network@latest/styles/vis-network.css" type="text/css" />
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vis-network@latest/dist/vis-network.min.js"> </script>
+<center>
+<h1></h1>
+</center>
+
+<!-- <link rel="stylesheet" href="../node_modules/vis/dist/vis.min.css" type="text/css" />
+<script type="text/javascript" src="../node_modules/vis/dist/vis.js"> </script>-->
+
+<style type="text/css">
+
+        #mynetwork {
+            width: 100%;
+            height: 750px;
+            background-color: #ffffff;
+            border: 1px solid lightgray;
+            position: relative;
+            float: left;
+        }
+
+        
+
+        
+
+        
+</style>
+
+</head>
+
+<body>
+<div id = "mynetwork"></div>
+
+
+<script type="text/javascript">
+
+    // initialize global variables.
+    var edges;
+    var nodes;
+    var network; 
+    var container;
+    var options, data;
+
+    
+    // This method is responsible for drawing the graph, returns the drawn network
+    function drawGraph() {
+        var container = document.getElementById('mynetwork');
+        
+        
+
+        // parsing and collecting nodes and edges from the python
+        nodes = new vis.DataSet([{"group": 0, "id": "\\x3ab28ecedea6cdb6feed398e93ae8c7b316b1182", "label": "\\x3ab28ecedea6cdb6feed398e93ae8c7b316b1182", "shape": "dot", "title": "\\x3ab28ecedea6cdb6feed398e93ae8c7b316b1182", "value": 1}, {"group": 0, "id": "\\x01f1d66effc1b544c64fe9e79d519b34b2eea31f", "label": "\\x01f1d66effc1b544c64fe9e79d519b34b2eea31f", "shape": "dot", "title": "\\x01f1d66effc1b544c64fe9e79d519b34b2eea31f", "value": 0}, {"group": 1, "id": "\\xccb63225a7b19dcf66717e4d40c9a72b39331d61", "label": "\\xccb63225a7b19dcf66717e4d40c9a72b39331d61", "shape": "dot", "title": "Uniswap V2: MC 6", "value": 1}, {"group": 6, "id": "\\x1111111254fb6c44bac0bed2854e76f90643097d", "label": "\\x1111111254fb6c44bac0bed2854e76f90643097d", "shape": "dot", "title": "1inch v4: Router", "value": 1}, {"group": 0, "id": "\\xdd75cd55c1367b3d2d928c6181eea46999d24a72", "label": "\\xdd75cd55c1367b3d2d928c6181eea46999d24a72", "shape": "dot", "title": "\\xdd75cd55c1367b3d2d928c6181eea46999d24a72", "value": 1}, {"group": 9, "id": "\\x28c6c06298d514db089934071355e5743bf21d60", "label": "\\x28c6c06298d514db089934071355e5743bf21d60", "shape": "dot", "title": "Binance 14", "value": 3}, {"group": 0, "id": "\\x6f7a586e19e4f9d3c0eb6ea2c616db069813bea6", "label": "\\x6f7a586e19e4f9d3c0eb6ea2c616db069813bea6", "shape": "dot", "title": "\\x6f7a586e19e4f9d3c0eb6ea2c616db069813bea6", "value": 1}, {"group": 0, "id": "\\x285d153589c8fe208c9f00cc966d7a1d32a9a655", "label": "\\x285d153589c8fe208c9f00cc966d7a1d32a9a655", "shape": "dot", "title": "\\x285d153589c8fe208c9f00cc966d7a1d32a9a655", "value": 1}, {"group": 0, "id": "\\x3507e4978e0eb83315d20df86ca0b976c0e40ccb", "label": "\\x3507e4978e0eb83315d20df86ca0b976c0e40ccb", "shape": "dot", "title": "\\x3507e4978e0eb83315d20df86ca0b976c0e40ccb", "value": 1}, {"group": 0, "id": "\\x3ab73d8799f2a4e74e7fee0eefcc79f6feb6f3e2", "label": "\\x3ab73d8799f2a4e74e7fee0eefcc79f6feb6f3e2", "shape": "dot", "title": "\\x3ab73d8799f2a4e74e7fee0eefcc79f6feb6f3e2", "value": 1}, {"group": 0, "id": "\\x852af47dc1f0c8d561ba5f8de23c3b2e17deeba8", "label": "\\x852af47dc1f0c8d561ba5f8de23c3b2e17deeba8", "shape": "dot", "title": "\\x852af47dc1f0c8d561ba5f8de23c3b2e17deeba8", "value": 1}, {"group": 0, "id": "\\x4c04a85cc56b21569ca742315f6893e415ad7bcb", "label": "\\x4c04a85cc56b21569ca742315f6893e415ad7bcb", "shape": "dot", "title": "\\x4c04a85cc56b21569ca742315f6893e415ad7bcb", "value": 0}, {"group": 0, "id": "\\xc5ef0bd52ae0e93cf7b1990f2c9f460fa87bf9de", "label": "\\xc5ef0bd52ae0e93cf7b1990f2c9f460fa87bf9de", "shape": "dot", "title": "\\xc5ef0bd52ae0e93cf7b1990f2c9f460fa87bf9de", "value": 1}, {"group": 3, "id": "\\x5c76ad4764a4607cd57644faa937a8ca16729e39", "label": "\\x5c76ad4764a4607cd57644faa937a8ca16729e39", "shape": "dot", "title": "Staked Merit Circle Contract", "value": 3}, {"group": 0, "id": "\\xf3907a01d515af5dd33e8249c9c9eefdbad993ea", "label": "\\xf3907a01d515af5dd33e8249c9c9eefdbad993ea", "shape": "dot", "title": "\\xf3907a01d515af5dd33e8249c9c9eefdbad993ea", "value": 2}, {"group": 20, "id": "\\xdfd5293d8e347dfe59e90efd55b2956a1343963d", "label": "\\xdfd5293d8e347dfe59e90efd55b2956a1343963d", "shape": "dot", "title": "Binance 16", "value": 3}, {"group": 0, "id": "\\x6e90ae41af1dea6f0006aa7752d9db2cf5e6a49f", "label": "\\x6e90ae41af1dea6f0006aa7752d9db2cf5e6a49f", "shape": "dot", "title": "\\x6e90ae41af1dea6f0006aa7752d9db2cf5e6a49f", "value": 1}, {"group": 32, "id": "\\x21a31ee1afc51d94c2efccaa2092ad1028285549", "label": "\\x21a31ee1afc51d94c2efccaa2092ad1028285549", "shape": "dot", "title": "Binance 15", "value": 2}, {"group": 0, "id": "\\x9c34e5f7a35b1d6d09ac1122ec989547671542ef", "label": "\\x9c34e5f7a35b1d6d09ac1122ec989547671542ef", "shape": "dot", "title": "\\x9c34e5f7a35b1d6d09ac1122ec989547671542ef", "value": 1}, {"group": 0, "id": "\\x74de5d4fcbf63e00296fd95d33236b9794016631", "label": "\\x74de5d4fcbf63e00296fd95d33236b9794016631", "shape": "dot", "title": "\\x74de5d4fcbf63e00296fd95d33236b9794016631", "value": 1}, {"group": 0, "id": "\\x95616088ab110a453ee224eabe491c62291f0180", "label": "\\x95616088ab110a453ee224eabe491c62291f0180", "shape": "dot", "title": "\\x95616088ab110a453ee224eabe491c62291f0180", "value": 1}, {"group": 0, "id": "\\x98041ab523024dacaefa3bb70dd982dbac68e855", "label": "\\x98041ab523024dacaefa3bb70dd982dbac68e855", "shape": "dot", "title": "\\x98041ab523024dacaefa3bb70dd982dbac68e855", "value": 0}, {"group": 2, "id": "\\x98c3d3183c4b8a650614ad179a1a98be0a8d6b8e", "label": "\\x98c3d3183c4b8a650614ad179a1a98be0a8d6b8e", "shape": "dot", "title": "MEV Bot", "value": 2}, {"group": 0, "id": "\\xc86a944e0526894a1a1f8ac01a80fc9a54bf5042", "label": "\\xc86a944e0526894a1a1f8ac01a80fc9a54bf5042", "shape": "dot", "title": "\\xc86a944e0526894a1a1f8ac01a80fc9a54bf5042", "value": 0}, {"group": 0, "id": "\\x1fc4b4bdf5162aa5e357041945c9333b2818adad", "label": "\\x1fc4b4bdf5162aa5e357041945c9333b2818adad", "shape": "dot", "title": "\\x1fc4b4bdf5162aa5e357041945c9333b2818adad", "value": 1}, {"group": 7, "id": "\\xe9e12db15d8a0ec338f148ffd9dc9606312a6b28", "label": "\\xe9e12db15d8a0ec338f148ffd9dc9606312a6b28", "shape": "dot", "title": "Uniswap V3: MC", "value": 0}, {"group": 0, "id": "\\x87cbc48075d7aa1760ac71c41e8bc289b6a31f56", "label": "\\x87cbc48075d7aa1760ac71c41e8bc289b6a31f56", "shape": "dot", "title": "\\x87cbc48075d7aa1760ac71c41e8bc289b6a31f56", "value": 1}, {"group": 0, "id": "\\xf89264d45508def91d295b9796390a7b3fb2210b", "label": "\\xf89264d45508def91d295b9796390a7b3fb2210b", "shape": "dot", "title": "\\xf89264d45508def91d295b9796390a7b3fb2210b", "value": 0}, {"group": 5, "id": "\\x44c01e5e4216f3162538914d9c7f5e6a0d87820e", "label": "\\x44c01e5e4216f3162538914d9c7f5e6a0d87820e", "shape": "dot", "title": "Staked Merit Circle Uniswap LP Contract", "value": 1}, {"group": 4, "id": "\\xfeea44bc2161f2fe11d55e557ae4ec855e2d1168", "label": "\\xfeea44bc2161f2fe11d55e557ae4ec855e2d1168", "shape": "dot", "title": "Escrowed Merit Circle Contract", "value": 0}]);
+        edges = new vis.DataSet([{"arrows": "to", "from": "\\x3ab28ecedea6cdb6feed398e93ae8c7b316b1182", "title": "Date: 2022-08-08T14:46:21+00:00\n Amount: 235.40243397 tokens", "to": "\\x01f1d66effc1b544c64fe9e79d519b34b2eea31f"}, {"arrows": "to", "from": "\\xccb63225a7b19dcf66717e4d40c9a72b39331d61", "title": "Date: 2022-08-08T14:29:38+00:00\n Amount: 1799.5291888309575 tokens", "to": "\\x1111111254fb6c44bac0bed2854e76f90643097d"}, {"arrows": "to", "from": "\\xdd75cd55c1367b3d2d928c6181eea46999d24a72", "title": "Date: 2022-08-08T14:00:03+00:00\n Amount: 7226.067968690454 tokens", "to": "\\x28c6c06298d514db089934071355e5743bf21d60"}, {"arrows": "to", "from": "\\x6f7a586e19e4f9d3c0eb6ea2c616db069813bea6", "title": "Date: 2022-08-08T14:00:03+00:00\n Amount: 930.82623 tokens", "to": "\\x28c6c06298d514db089934071355e5743bf21d60"}, {"arrows": "to", "from": "\\x285d153589c8fe208c9f00cc966d7a1d32a9a655", "title": "Date: 2022-08-08T14:00:03+00:00\n Amount: 7672.44 tokens", "to": "\\x28c6c06298d514db089934071355e5743bf21d60"}, {"arrows": "to", "from": "\\x3507e4978e0eb83315d20df86ca0b976c0e40ccb", "title": "Date: 2022-08-08T14:00:03+00:00\n Amount: 3191.0 tokens", "to": "\\x28c6c06298d514db089934071355e5743bf21d60"}, {"arrows": "to", "from": "\\x3ab73d8799f2a4e74e7fee0eefcc79f6feb6f3e2", "title": "Date: 2022-08-08T14:31:00+00:00\n Amount: 51799.513315049626 tokens", "to": "\\x28c6c06298d514db089934071355e5743bf21d60"}, {"arrows": "to", "from": "\\x852af47dc1f0c8d561ba5f8de23c3b2e17deeba8", "title": "Date: 2022-08-08T14:31:00+00:00\n Amount: 6000.0 tokens", "to": "\\x28c6c06298d514db089934071355e5743bf21d60"}, {"arrows": "to", "from": "\\x1111111254fb6c44bac0bed2854e76f90643097d", "title": "Date: 2022-08-08T14:29:38+00:00\n Amount: 1799.5291888309575 tokens", "to": "\\x4c04a85cc56b21569ca742315f6893e415ad7bcb"}, {"arrows": "to", "from": "\\xc5ef0bd52ae0e93cf7b1990f2c9f460fa87bf9de", "title": "Date: 2022-08-08T14:30:34+00:00\n Amount: 15425.32921 tokens", "to": "\\x5c76ad4764a4607cd57644faa937a8ca16729e39"}, {"arrows": "to", "from": "\\xf3907a01d515af5dd33e8249c9c9eefdbad993ea", "title": "Date: 2022-08-08T14:47:02+00:00\n Amount: 21749.152381306656 tokens", "to": "\\x5c76ad4764a4607cd57644faa937a8ca16729e39"}, {"arrows": "to", "from": "\\xdfd5293d8e347dfe59e90efd55b2956a1343963d", "title": "Date: 2022-08-08T14:00:31+00:00\n Amount: 7664.87 tokens", "to": "\\x6e90ae41af1dea6f0006aa7752d9db2cf5e6a49f"}, {"arrows": "to", "from": "\\x21a31ee1afc51d94c2efccaa2092ad1028285549", "title": "Date: 2022-08-08T14:18:39+00:00\n Amount: 9702.88 tokens", "to": "\\x6e90ae41af1dea6f0006aa7752d9db2cf5e6a49f"}, {"arrows": "to", "from": "\\xdfd5293d8e347dfe59e90efd55b2956a1343963d", "title": "Date: 2022-08-08T14:21:31+00:00\n Amount: 7354.84 tokens", "to": "\\x6e90ae41af1dea6f0006aa7752d9db2cf5e6a49f"}, {"arrows": "to", "from": "\\xdfd5293d8e347dfe59e90efd55b2956a1343963d", "title": "Date: 2022-08-08T14:21:43+00:00\n Amount: 15928.1 tokens", "to": "\\x6e90ae41af1dea6f0006aa7752d9db2cf5e6a49f"}, {"arrows": "to", "from": "\\xdfd5293d8e347dfe59e90efd55b2956a1343963d", "title": "Date: 2022-08-08T14:27:27+00:00\n Amount: 21166.76 tokens", "to": "\\x6e90ae41af1dea6f0006aa7752d9db2cf5e6a49f"}, {"arrows": "to", "from": "\\x28c6c06298d514db089934071355e5743bf21d60", "title": "Date: 2022-08-08T14:27:47+00:00\n Amount: 11377.36 tokens", "to": "\\x6e90ae41af1dea6f0006aa7752d9db2cf5e6a49f"}, {"arrows": "to", "from": "\\x9c34e5f7a35b1d6d09ac1122ec989547671542ef", "title": "Date: 2022-08-08T14:42:48+00:00\n Amount: 69.25731137256892 tokens", "to": "\\x74de5d4fcbf63e00296fd95d33236b9794016631"}, {"arrows": "to", "from": "\\x5c76ad4764a4607cd57644faa937a8ca16729e39", "title": "Date: 2022-08-08T14:27:09+00:00\n Amount: 3162.413815972964 tokens", "to": "\\x95616088ab110a453ee224eabe491c62291f0180"}, {"arrows": "to", "from": "\\x28c6c06298d514db089934071355e5743bf21d60", "title": "Date: 2022-08-08T14:44:06+00:00\n Amount: 5992.43 tokens", "to": "\\x98041ab523024dacaefa3bb70dd982dbac68e855"}, {"arrows": "to", "from": "\\x28c6c06298d514db089934071355e5743bf21d60", "title": "Date: 2022-08-08T14:16:19+00:00\n Amount: 13516.33 tokens", "to": "\\x98c3d3183c4b8a650614ad179a1a98be0a8d6b8e"}, {"arrows": "to", "from": "\\x28c6c06298d514db089934071355e5743bf21d60", "title": "Date: 2022-08-08T14:21:43+00:00\n Amount: 14877.43 tokens", "to": "\\x98c3d3183c4b8a650614ad179a1a98be0a8d6b8e"}, {"arrows": "to", "from": "\\xdfd5293d8e347dfe59e90efd55b2956a1343963d", "title": "Date: 2022-08-08T14:28:21+00:00\n Amount: 13235.93 tokens", "to": "\\x98c3d3183c4b8a650614ad179a1a98be0a8d6b8e"}, {"arrows": "to", "from": "\\x21a31ee1afc51d94c2efccaa2092ad1028285549", "title": "Date: 2022-08-08T14:46:03+00:00\n Amount: 15484.83 tokens", "to": "\\x98c3d3183c4b8a650614ad179a1a98be0a8d6b8e"}, {"arrows": "to", "from": "\\xdfd5293d8e347dfe59e90efd55b2956a1343963d", "title": "Date: 2022-08-08T14:27:47+00:00\n Amount: 15425.32921 tokens", "to": "\\xc5ef0bd52ae0e93cf7b1990f2c9f460fa87bf9de"}, {"arrows": "to", "from": "\\x98c3d3183c4b8a650614ad179a1a98be0a8d6b8e", "title": "Date: 2022-08-08T13:59:28+00:00\n Amount: 13317.2 tokens", "to": "\\xc86a944e0526894a1a1f8ac01a80fc9a54bf5042"}, {"arrows": "to", "from": "\\x98c3d3183c4b8a650614ad179a1a98be0a8d6b8e", "title": "Date: 2022-08-08T14:00:03+00:00\n Amount: 3943.37 tokens", "to": "\\xccb63225a7b19dcf66717e4d40c9a72b39331d61"}, {"arrows": "to", "from": "\\x1fc4b4bdf5162aa5e357041945c9333b2818adad", "title": "Date: 2022-08-08T14:12:12+00:00\n Amount: 17385.216394423056 tokens", "to": "\\xccb63225a7b19dcf66717e4d40c9a72b39331d61"}, {"arrows": "to", "from": "\\x98c3d3183c4b8a650614ad179a1a98be0a8d6b8e", "title": "Date: 2022-08-08T14:13:53+00:00\n Amount: 3957.38 tokens", "to": "\\xccb63225a7b19dcf66717e4d40c9a72b39331d61"}, {"arrows": "to", "from": "\\x6e90ae41af1dea6f0006aa7752d9db2cf5e6a49f", "title": "Date: 2022-08-08T14:16:45+00:00\n Amount: 7664.87 tokens", "to": "\\xccb63225a7b19dcf66717e4d40c9a72b39331d61"}, {"arrows": "to", "from": "\\x98c3d3183c4b8a650614ad179a1a98be0a8d6b8e", "title": "Date: 2022-08-08T14:16:45+00:00\n Amount: 3971.48 tokens", "to": "\\xccb63225a7b19dcf66717e4d40c9a72b39331d61"}, {"arrows": "to", "from": "\\x98c3d3183c4b8a650614ad179a1a98be0a8d6b8e", "title": "Date: 2022-08-08T14:17:09+00:00\n Amount: 3977.56 tokens", "to": "\\xccb63225a7b19dcf66717e4d40c9a72b39331d61"}, {"arrows": "to", "from": "\\x98c3d3183c4b8a650614ad179a1a98be0a8d6b8e", "title": "Date: 2022-08-08T14:18:14+00:00\n Amount: 2947.17 tokens", "to": "\\xccb63225a7b19dcf66717e4d40c9a72b39331d61"}, {"arrows": "to", "from": "\\x6e90ae41af1dea6f0006aa7752d9db2cf5e6a49f", "title": "Date: 2022-08-08T14:19:11+00:00\n Amount: 9702.88 tokens", "to": "\\xccb63225a7b19dcf66717e4d40c9a72b39331d61"}, {"arrows": "to", "from": "\\x98c3d3183c4b8a650614ad179a1a98be0a8d6b8e", "title": "Date: 2022-08-08T14:19:29+00:00\n Amount: 3985.69 tokens", "to": "\\xccb63225a7b19dcf66717e4d40c9a72b39331d61"}, {"arrows": "to", "from": "\\x6e90ae41af1dea6f0006aa7752d9db2cf5e6a49f", "title": "Date: 2022-08-08T14:21:43+00:00\n Amount: 7354.84 tokens", "to": "\\xccb63225a7b19dcf66717e4d40c9a72b39331d61"}, {"arrows": "to", "from": "\\x98c3d3183c4b8a650614ad179a1a98be0a8d6b8e", "title": "Date: 2022-08-08T14:22:25+00:00\n Amount: 2864.9 tokens", "to": "\\xccb63225a7b19dcf66717e4d40c9a72b39331d61"}, {"arrows": "to", "from": "\\x6e90ae41af1dea6f0006aa7752d9db2cf5e6a49f", "title": "Date: 2022-08-08T14:22:25+00:00\n Amount: 6000.0 tokens", "to": "\\xccb63225a7b19dcf66717e4d40c9a72b39331d61"}, {"arrows": "to", "from": "\\x98c3d3183c4b8a650614ad179a1a98be0a8d6b8e", "title": "Date: 2022-08-08T14:24:12+00:00\n Amount: 2537.81 tokens", "to": "\\xccb63225a7b19dcf66717e4d40c9a72b39331d61"}, {"arrows": "to", "from": "\\x98c3d3183c4b8a650614ad179a1a98be0a8d6b8e", "title": "Date: 2022-08-08T14:24:30+00:00\n Amount: 3837.81 tokens", "to": "\\xccb63225a7b19dcf66717e4d40c9a72b39331d61"}, {"arrows": "to", "from": "\\x6e90ae41af1dea6f0006aa7752d9db2cf5e6a49f", "title": "Date: 2022-08-08T14:25:56+00:00\n Amount: 9928.1 tokens", "to": "\\xccb63225a7b19dcf66717e4d40c9a72b39331d61"}, {"arrows": "to", "from": "\\x98c3d3183c4b8a650614ad179a1a98be0a8d6b8e", "title": "Date: 2022-08-08T14:26:30+00:00\n Amount: 4000.0 tokens", "to": "\\xccb63225a7b19dcf66717e4d40c9a72b39331d61"}, {"arrows": "to", "from": "\\x6e90ae41af1dea6f0006aa7752d9db2cf5e6a49f", "title": "Date: 2022-08-08T14:27:47+00:00\n Amount: 21166.76 tokens", "to": "\\xccb63225a7b19dcf66717e4d40c9a72b39331d61"}, {"arrows": "to", "from": "\\x95616088ab110a453ee224eabe491c62291f0180", "title": "Date: 2022-08-08T14:29:14+00:00\n Amount: 3162.413815972964 tokens", "to": "\\xccb63225a7b19dcf66717e4d40c9a72b39331d61"}, {"arrows": "to", "from": "\\x98c3d3183c4b8a650614ad179a1a98be0a8d6b8e", "title": "Date: 2022-08-08T14:30:34+00:00\n Amount: 4014.41 tokens", "to": "\\xccb63225a7b19dcf66717e4d40c9a72b39331d61"}, {"arrows": "to", "from": "\\x98c3d3183c4b8a650614ad179a1a98be0a8d6b8e", "title": "Date: 2022-08-08T14:36:10+00:00\n Amount: 3412.93 tokens", "to": "\\xccb63225a7b19dcf66717e4d40c9a72b39331d61"}, {"arrows": "to", "from": "\\xf3907a01d515af5dd33e8249c9c9eefdbad993ea", "title": "Date: 2022-08-08T14:40:26+00:00\n Amount: 15000.0 tokens", "to": "\\xccb63225a7b19dcf66717e4d40c9a72b39331d61"}, {"arrows": "to", "from": "\\xf3907a01d515af5dd33e8249c9c9eefdbad993ea", "title": "Date: 2022-08-08T14:42:02+00:00\n Amount: 14755.510046773343 tokens", "to": "\\xccb63225a7b19dcf66717e4d40c9a72b39331d61"}, {"arrows": "to", "from": "\\x98c3d3183c4b8a650614ad179a1a98be0a8d6b8e", "title": "Date: 2022-08-08T14:43:01+00:00\n Amount: 4026.84 tokens", "to": "\\xccb63225a7b19dcf66717e4d40c9a72b39331d61"}, {"arrows": "to", "from": "\\x6e90ae41af1dea6f0006aa7752d9db2cf5e6a49f", "title": "Date: 2022-08-08T14:43:24+00:00\n Amount: 11377.36 tokens", "to": "\\xccb63225a7b19dcf66717e4d40c9a72b39331d61"}, {"arrows": "to", "from": "\\x98c3d3183c4b8a650614ad179a1a98be0a8d6b8e", "title": "Date: 2022-08-08T14:44:06+00:00\n Amount: 4035.17 tokens", "to": "\\xccb63225a7b19dcf66717e4d40c9a72b39331d61"}, {"arrows": "to", "from": "\\xf3907a01d515af5dd33e8249c9c9eefdbad993ea", "title": "Date: 2022-08-08T14:45:17+00:00\n Amount: 11000.0 tokens", "to": "\\xccb63225a7b19dcf66717e4d40c9a72b39331d61"}, {"arrows": "to", "from": "\\x74de5d4fcbf63e00296fd95d33236b9794016631", "title": "Date: 2022-08-08T14:42:48+00:00\n Amount: 69.25731137256892 tokens", "to": "\\xe9e12db15d8a0ec338f148ffd9dc9606312a6b28"}, {"arrows": "to", "from": "\\x5c76ad4764a4607cd57644faa937a8ca16729e39", "title": "Date: 2022-08-08T14:38:31+00:00\n Amount: 62504.66242808 tokens", "to": "\\xf3907a01d515af5dd33e8249c9c9eefdbad993ea"}, {"arrows": "to", "from": "\\x87cbc48075d7aa1760ac71c41e8bc289b6a31f56", "title": "Date: 2022-08-08T14:46:49+00:00\n Amount: 4.73014 tokens", "to": "\\xf89264d45508def91d295b9796390a7b3fb2210b"}, {"arrows": "to", "from": "\\x44c01e5e4216f3162538914d9c7f5e6a0d87820e", "title": "Date: 2022-08-08T14:06:30+00:00\n Amount: 358.36635385534726 tokens", "to": "\\xfeea44bc2161f2fe11d55e557ae4ec855e2d1168"}, {"arrows": "to", "from": "\\x44c01e5e4216f3162538914d9c7f5e6a0d87820e", "title": "Date: 2022-08-08T14:06:37+00:00\n Amount: 4998.314859634769 tokens", "to": "\\xfeea44bc2161f2fe11d55e557ae4ec855e2d1168"}, {"arrows": "to", "from": "\\x5c76ad4764a4607cd57644faa937a8ca16729e39", "title": "Date: 2022-08-08T14:17:45+00:00\n Amount: 60.101977590602246 tokens", "to": "\\xfeea44bc2161f2fe11d55e557ae4ec855e2d1168"}, {"arrows": "to", "from": "\\x44c01e5e4216f3162538914d9c7f5e6a0d87820e", "title": "Date: 2022-08-08T14:18:14+00:00\n Amount: 713.6441182524915 tokens", "to": "\\xfeea44bc2161f2fe11d55e557ae4ec855e2d1168"}, {"arrows": "to", "from": "\\x5c76ad4764a4607cd57644faa937a8ca16729e39", "title": "Date: 2022-08-08T14:23:36+00:00\n Amount: 590.2952946597845 tokens", "to": "\\xfeea44bc2161f2fe11d55e557ae4ec855e2d1168"}]);
+
+        // adding nodes and edges to the graph
+        data = {nodes: nodes, edges: edges};
+
+        var options = {
+    "configure": {
+        "enabled": false
+    },
+    "edges": {
+        "color": {
+            "inherit": true
+        },
+        "smooth": {
+            "enabled": true,
+            "type": "dynamic"
+        }
+    },
+    "interaction": {
+        "dragNodes": true,
+        "hideEdgesOnDrag": false,
+        "hideNodesOnDrag": false
+    },
+    "physics": {
+        "enabled": true,
+        "stabilization": {
+            "enabled": true,
+            "fit": true,
+            "iterations": 1000,
+            "onlyDynamicEdges": false,
+            "updateInterval": 50
+        }
+    }
+};
+        
+        
+
+        
+
+        network = new vis.Network(container, data, options);
+	 
+        
+
+
+        
+
+        return network;
+
+    }
+
+    drawGraph();
+
+</script>
+</body>
+</html>

@@ -1,0 +1,108 @@
+<html>
+<head>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vis-network@latest/styles/vis-network.css" type="text/css" />
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vis-network@latest/dist/vis-network.min.js"> </script>
+<center>
+<h1></h1>
+</center>
+
+<!-- <link rel="stylesheet" href="../node_modules/vis/dist/vis.min.css" type="text/css" />
+<script type="text/javascript" src="../node_modules/vis/dist/vis.js"> </script>-->
+
+<style type="text/css">
+
+        #mynetwork {
+            width: 100%;
+            height: 750px;
+            background-color: #ffffff;
+            border: 1px solid lightgray;
+            position: relative;
+            float: left;
+        }
+
+        
+
+        
+
+        
+</style>
+
+</head>
+
+<body>
+<div id = "mynetwork"></div>
+
+
+<script type="text/javascript">
+
+    // initialize global variables.
+    var edges;
+    var nodes;
+    var network; 
+    var container;
+    var options, data;
+
+    
+    // This method is responsible for drawing the graph, returns the drawn network
+    function drawGraph() {
+        var container = document.getElementById('mynetwork');
+        
+        
+
+        // parsing and collecting nodes and edges from the python
+        nodes = new vis.DataSet([{"group": 0, "id": "\\x3ab28ecedea6cdb6feed398e93ae8c7b316b1182", "label": "\\x3ab28ecedea6cdb6feed398e93ae8c7b316b1182", "shape": "dot", "title": "\\x3ab28ecedea6cdb6feed398e93ae8c7b316b1182", "value": 1}, {"group": 0, "id": "\\x01f1d66effc1b544c64fe9e79d519b34b2eea31f", "label": "\\x01f1d66effc1b544c64fe9e79d519b34b2eea31f", "shape": "dot", "title": "\\x01f1d66effc1b544c64fe9e79d519b34b2eea31f", "value": 0}, {"group": 0, "id": "\\x9c34e5f7a35b1d6d09ac1122ec989547671542ef", "label": "\\x9c34e5f7a35b1d6d09ac1122ec989547671542ef", "shape": "dot", "title": "\\x9c34e5f7a35b1d6d09ac1122ec989547671542ef", "value": 1}, {"group": 0, "id": "\\x74de5d4fcbf63e00296fd95d33236b9794016631", "label": "\\x74de5d4fcbf63e00296fd95d33236b9794016631", "shape": "dot", "title": "\\x74de5d4fcbf63e00296fd95d33236b9794016631", "value": 0}, {"group": 0, "id": "\\x87cbc48075d7aa1760ac71c41e8bc289b6a31f56", "label": "\\x87cbc48075d7aa1760ac71c41e8bc289b6a31f56", "shape": "dot", "title": "\\x87cbc48075d7aa1760ac71c41e8bc289b6a31f56", "value": 1}, {"group": 0, "id": "\\xf89264d45508def91d295b9796390a7b3fb2210b", "label": "\\xf89264d45508def91d295b9796390a7b3fb2210b", "shape": "dot", "title": "\\xf89264d45508def91d295b9796390a7b3fb2210b", "value": 0}]);
+        edges = new vis.DataSet([{"arrows": "to", "from": "\\x3ab28ecedea6cdb6feed398e93ae8c7b316b1182", "to": "\\x01f1d66effc1b544c64fe9e79d519b34b2eea31f"}, {"arrows": "to", "from": "\\x9c34e5f7a35b1d6d09ac1122ec989547671542ef", "to": "\\x74de5d4fcbf63e00296fd95d33236b9794016631"}, {"arrows": "to", "from": "\\x87cbc48075d7aa1760ac71c41e8bc289b6a31f56", "to": "\\xf89264d45508def91d295b9796390a7b3fb2210b"}]);
+
+        // adding nodes and edges to the graph
+        data = {nodes: nodes, edges: edges};
+
+        var options = {
+    "configure": {
+        "enabled": false
+    },
+    "edges": {
+        "color": {
+            "inherit": true
+        },
+        "smooth": {
+            "enabled": true,
+            "type": "dynamic"
+        }
+    },
+    "interaction": {
+        "dragNodes": true,
+        "hideEdgesOnDrag": false,
+        "hideNodesOnDrag": false
+    },
+    "physics": {
+        "enabled": true,
+        "stabilization": {
+            "enabled": true,
+            "fit": true,
+            "iterations": 1000,
+            "onlyDynamicEdges": false,
+            "updateInterval": 50
+        }
+    }
+};
+        
+        
+
+        
+
+        network = new vis.Network(container, data, options);
+	 
+        
+
+
+        
+
+        return network;
+
+    }
+
+    drawGraph();
+
+</script>
+</body>
+</html>

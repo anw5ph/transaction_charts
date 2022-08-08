@@ -67,40 +67,39 @@ class Transaction_Graph:
             # Amount transferred
             amnt = e[3]
 
-            if src == r'\x5ab53ee1d50eef2c1dd3d5402789cd27bb52c1bb':
+            if src == r'\xccb63225a7b19dcf66717e4d40c9a72b39331d61':
                 net.add_node(
-                    src, title="Uniswap V3: AAVE", group=1)
-            elif src == r'\xc697051d1c6296c24ae3bcef39aca743861d9a81':
+                    src, title="Uniswap V2: MC 6", group=1)
+            elif src == r'\x98c3d3183c4b8a650614ad179a1a98be0a8d6b8e':
                 net.add_node(
-                    src, title="Balancer: AAVE-WETH", group=2)
-            elif src == r'\xa57bd00134b2850b2a1c55860c9e9ea100fdd6cf' or src == r'\x00000000c2cf7648c169b25ef1c217864bfa38cc':
+                    src, title="MEV Bot", group=2)
+            elif src == r'\x5c76ad4764a4607cd57644faa937a8ca16729e39':
                 net.add_node(
-                    src, title="MEV Bot", group=3)
-            elif src == r'\x4da27a545c0c5b758a6ba100e3a049001de870f5':
+                    src, title="Staked Merit Circle Contract", group=3)
+            elif src == r'\xfeea44bc2161f2fe11d55e557ae4ec855e2d1168':
                 net.add_node(
-                    src, title="Aave: Staked Aave", group=4)
-            elif src == r'\xdef171fe48cf0115b1d80b88dc8eab59176fee57':
+                    src, title="Escrowed Merit Circle Contract", group=4)
+            elif src == r'\x44c01e5e4216f3162538914d9c7f5e6a0d87820e':
                 net.add_node(
-                    src, title="Paraswap v5: Augustus Swapper Mainnet", group=5)
-            elif src == r'\x22f9dcf4647084d6c31b2765f6910cd85c178c18':
-                net.add_node(
-                    src, title="0x: Exchange Proxy Flash Wallet", group=6)
-            elif src == r'\x288931fa76d7b0482f0fd0bca9a50bf0d22b9fef':
-                net.add_node(
-                    src, title="1inch: Aggregation Executor 2", group=7)
-            elif src == r'\xd75ea151a61d06868e31f8988d28dfe5e9df57b4':
-                net.add_node(
-                    src, title="SushiSwap: AAVE", group=8)
-            elif src == r'\xd784927ff2f95ba542bfc824c8a8a98f3495f6b5':
-                net.add_node(src, title="Aave: Incentives Controller", group=9)
+                    src, title="Staked Merit Circle Uniswap LP Contract", group=5)
             elif src == r'\x1111111254fb6c44bac0bed2854e76f90643097d':
+                net.add_node(src, title="1inch v4: Router", group=6)
+            elif src == r'\xe9e12db15d8a0ec338f148ffd9dc9606312a6b28':
                 net.add_node(
-                    src, title="1inch v4: Router", group=10)
-            elif src == r'\xffc97d72e13e01096502cb8eb52dee56f74dad7b':
-                net.add_node(src, title="Aave: aAAVE Token V2", group=11)
-            elif src == r'\x3e66b66fd1d0b02fda6c811da9e0547970db2f21':
+                    src, title="Uniswap V3: MC", group=7)
+            elif src == r'\x68b3465833fb72a70ecdf485e0e4c7bd8665fc45':
                 net.add_node(
-                    src, title="Balancer: Exchange Proxy 2", group=12)
+                    src, title="Uniswap V3: Router 2", group=8)
+            elif src == r'\x28c6c06298d514db089934071355e5743bf21d60':
+                net.add_node(src, title="Binance 14", group=9)
+            elif src == r'\xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2':
+                net.add_node(
+                    src, title="Wrapped Ether", group=10)
+            elif src == r'\x75e89d5979e4f6fba9f97c104c2f0afb3f1dcb88':
+                net.add_node(src, title="MEXC: Mexc.com", group=11)
+            elif src == r'\x9ec9d9fd1aa941ed171e7a3951d68e96137ed21e':
+                net.add_node(
+                    src, title="FlowerPower Contract", group=12)
             elif src == r'\x3cd751e6b0078be393132286c442345e5dc49699':
                 net.add_node(src, title="Coinbase 4", group=13)
             elif src == r'\x267be1c1d684f78cb4f6a176c4911b741e4ffdc0':
@@ -174,40 +173,39 @@ class Transaction_Graph:
             else:
                 net.add_node(src, title=src, group=0)
 
-            if tar == r'\x5ab53ee1d50eef2c1dd3d5402789cd27bb52c1bb':
+            if tar == r'\xccb63225a7b19dcf66717e4d40c9a72b39331d61':
                 net.add_node(
-                    tar, title="Uniswap V3: AAVE", group=1)
-            elif tar == r'\xc697051d1c6296c24ae3bcef39aca743861d9a81':
+                    tar, title="Uniswap V2: MC 6", group=1)
+            elif tar == r'\x98c3d3183c4b8a650614ad179a1a98be0a8d6b8e':
                 net.add_node(
-                    tar, title="Balancer: AAVE-WETH", group=2)
-            elif tar == r'\xa57bd00134b2850b2a1c55860c9e9ea100fdd6cf' or tar == r'\x00000000c2cf7648c169b25ef1c217864bfa38cc':
+                    tar, title="MEV Bot", group=2)
+            elif tar == r'\x5c76ad4764a4607cd57644faa937a8ca16729e39':
                 net.add_node(
-                    tar, title="MEV Bot", group=3)
-            elif tar == r'\x4da27a545c0c5b758a6ba100e3a049001de870f5':
+                    tar, title="Staked Merit Circle Contract", group=3)
+            elif tar == r'\xfeea44bc2161f2fe11d55e557ae4ec855e2d1168':
                 net.add_node(
-                    tar, title="Aave: Staked Aave", group=4)
-            elif tar == r'\xdef171fe48cf0115b1d80b88dc8eab59176fee57':
+                    tar, title="Escrowed Merit Circle Contract", group=4)
+            elif tar == r'\x44c01e5e4216f3162538914d9c7f5e6a0d87820e':
                 net.add_node(
-                    tar, title="Paraswap v5: Augustus Swapper Mainnet", group=5)
-            elif tar == r'\x22f9dcf4647084d6c31b2765f6910cd85c178c18':
-                net.add_node(
-                    tar, title="0x: Exchange Proxy Flash Wallet", group=6)
-            elif tar == r'\x288931fa76d7b0482f0fd0bca9a50bf0d22b9fef':
-                net.add_node(
-                    tar, title="1inch: Aggregation Executor 2", group=7)
-            elif tar == r'\xd75ea151a61d06868e31f8988d28dfe5e9df57b4':
-                net.add_node(
-                    tar, title="SushiSwap: AAVE", group=8)
-            elif tar == r'\xd784927ff2f95ba542bfc824c8a8a98f3495f6b5':
-                net.add_node(tar, title="Aave: Incentives Controller", group=9)
+                    tar, title="Staked Merit Circle Uniswap LP Contract", group=5)
             elif tar == r'\x1111111254fb6c44bac0bed2854e76f90643097d':
+                net.add_node(tar, title="1inch v4: Router", group=6)
+            elif tar == r'\xe9e12db15d8a0ec338f148ffd9dc9606312a6b28':
                 net.add_node(
-                    tar, title="1inch v4: Router", group=10)
-            elif tar == r'\xffc97d72e13e01096502cb8eb52dee56f74dad7b':
-                net.add_node(tar, title="Aave: aAAVE Token V2", group=11)
-            elif tar == r'\x3e66b66fd1d0b02fda6c811da9e0547970db2f21':
+                    tar, title="Uniswap V3: MC", group=7)
+            elif tar == r'\x68b3465833fb72a70ecdf485e0e4c7bd8665fc45':
                 net.add_node(
-                    tar, title="Balancer: Exchange Proxy 2", group=12)
+                    tar, title="Uniswap V3: Router 2", group=8)
+            elif tar == r'\x28c6c06298d514db089934071355e5743bf21d60':
+                net.add_node(tar, title="Binance 14", group=9)
+            elif tar == r'\xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2':
+                net.add_node(
+                    tar, title="Wrapped Ether", group=10)
+            elif tar == r'\x75e89d5979e4f6fba9f97c104c2f0afb3f1dcb88':
+                net.add_node(tar, title="MEXC: Mexc.com", group=11)
+            elif tar == r'\x9ec9d9fd1aa941ed171e7a3951d68e96137ed21e':
+                net.add_node(
+                    tar, title="FlowerPower Contract", group=12)
             elif tar == r'\x3cd751e6b0078be393132286c442345e5dc49699':
                 net.add_node(tar, title="Coinbase 4", group=13)
             elif tar == r'\x267be1c1d684f78cb4f6a176c4911b741e4ffdc0':
