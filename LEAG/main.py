@@ -2,7 +2,7 @@ from graph import Transaction_Graph
 import pandas as pd
 
 # Reads data from csv file
-fp = open("noun_trans_data_1month_080822.csv", 'r')
+fp = open("leag_trans_data_1month_080822.csv", 'r')
 fulllines = fp.readlines()
 lines = []
 for line in fulllines:
@@ -39,15 +39,15 @@ digraph = tg.create_graph(lines)
 # print("Degree of each node in the graph" + str(degree))
 
 # Read data in from csv and seperate data
-data = pd.read_csv('noun_trans_data_1month_080822.csv')
+data = pd.read_csv('leag_trans_data_1month_080822.csv')
 net1 = tg.create_pyvis_graph(data)
-# net2 = tg.create_pyvis_graph_minus(
-#     data, [r'\x4708713b4b6bd32e41bcb2f9c5901d74fedba447', r'\xe66b31678d6c16e9ebf358268a790b763c133750', r'\0x22f9dcf4647084d6c31b2765f6910cd85c178c18'
-#            ])
+net2 = tg.create_pyvis_graph_minus(
+    data, [r'\x4708713b4b6bd32e41bcb2f9c5901d74fedba447', r'\xe66b31678d6c16e9ebf358268a790b763c133750', r'\0x22f9dcf4647084d6c31b2765f6910cd85c178c18'
+           ])
 
 # Show the graph
-net1.show("noun_trans_data_1month_080822.html")
-# net2.show("noun_trans_data_1month_minus_dex_080822.html")
+net1.show("leag_trans_data_1month_080822.html")
+net2.show("leag_trans_data_1month_minus_dex_080822.html")
 
 # Gets the frequencies of from addresses, to addresses, and both
 from_addy, to_addy, all_addy = tg.freq_of_addresses(lines)

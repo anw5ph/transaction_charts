@@ -47,10 +47,10 @@ class Transaction_Graph:
         date_time = data['date_time']
 
         # List of token amounts involved in transaction (3rd column)
-        nft_id = data['id']
+        amount = data['amount']
 
         # Combines data into matrix
-        edges_data = zip(fro, to, date_time, nft_id)
+        edges_data = zip(fro, to, date_time, amount)
 
         # Iterate through all elements in the matrix
         for e in edges_data:
@@ -65,76 +65,76 @@ class Transaction_Graph:
             dte = e[2]
 
             # Amount transferred
-            nft_id = e[3]
+            amnt = e[3]
 
-            if src == r'\x0bc3807ec262cb779b38d65b38158acc3bfede10':
+            if src == r'\x0f8039283f1e02bf65d174493ff3d173c7d82e8f':
                 net.add_node(
-                    src, title="Nouns DAO: Treasury", group=1)
-            elif src == r'\x830bd73e4184cef73443c15111a1df14e495c706':
+                    src, title="LeagueDAO CommunityVault Contract", group=1)
+            elif src == r'\x53986d9ab11e53d491840007b3935d8a94e4b04b':
                 net.add_node(
-                    src, title="Nouns DAO: Nouns Auction House Proxy", group=2)
-            elif src == r'\x0000000000000000000000000000000000000000':
+                    src, title="LeagueDAO Rewards Contract", group=2)
+            elif src == r'\x4708713b4b6bd32e41bcb2f9c5901d74fedba447':
                 net.add_node(
-                    src, title="Nouns DAO Mint Event", group=3)
-            elif src == r'\x2573c60a6d127755aa2dc85e342f7da2378a0cc5' or src == r'\x2d7d54476738286552173b5957999664b9fbd467':
+                    src, title="SushiSwap: LEAG-USDC", group=3)
+            elif src == r'\x67f60da0f409ab8427e8a408efc4b137d0bd4e7b':
                 net.add_node(
-                    src, title="Gnosis Safe Multisig Proxy Contract", group=4)
-            elif src == r'\x83c8f28c26bf6aaca652df1dbbe0e1b56f8baba2':
+                    src, title="LeagueDAO Kernel", group=4)
+            elif src == r'\xe66b31678d6c16e9ebf358268a790b763c133750':
                 net.add_node(
-                    src, title="Gem: Gemswap 2 Contract", group=5)
-            elif src == r'\xb98efe56decceb1bec9faeeaf62500deb0953474':
+                    src, title="0x: Coinbase Wallet Proxy", group=5)
+            elif src == r'\x3f148612315aae2514ac630d6faf0d94b8cd8e33':
                 net.add_node(
-                    src, title="Nouns DAO: PWNVault Contract", group=6)
-            elif src == r'\xf896527c49b44aab3cf22ae356fa3af8e331f280':
+                    src, title="LeagueDAO Staking Contract", group=6)
+            elif src == r'\0x22f9dcf4647084d6c31b2765f6910cd85c178c18':
                 net.add_node(
-                    src, title="Nouns DAO: DirectLoanFixedOffer Contract", group=7)
-            elif src == r'\x9e3421274fb4053a83917d62bd368332e9e71fe0':
+                    src, title="0x: Exchange Proxy Flash Wallet", group=7)
+            elif src == r'\0xcbfc6e810186d9f1cd2f52a1afabcee5ae855a54':
                 net.add_node(
-                    src, title="Blockchain Capital: Oracle DAO Rewards", group=8)
-            elif src == r'\x91dccaa260cc4616e1a6e6b693db7207c5e42937':
+                    src, title="LeagueDAO: Vesting Contract", group=8)
+            elif src == r'\x981958fcd64058d296608b4604ebc7a0c3662254':
                 net.add_node(
-                    src, title="Eth2 Depositor", group=9)
-            elif src == r'\xd5f279ff9eb21c6d40c8f345a66f2751c4eea1fb':
+                    src, title="LeagueDAO: TransparentUpgradeableProxy Contract", group=9)
+            elif src == r'\x1f7683228ee9bc65335374ea5c92b81c74131404':
                 net.add_node(
-                    src, title="NounsDAOExecutor Contract", group=10)
+                    src, title="LeagueDAO: Proxy Contract", group=10)
             else:
                 net.add_node(src, title=src, group=0)
 
-            if tar == r'\x0bc3807ec262cb779b38d65b38158acc3bfede10':
+            if tar == r'\x0f8039283f1e02bf65d174493ff3d173c7d82e8f':
                 net.add_node(
-                    tar, title="Nouns DAO: Treasury", group=1)
-            elif tar == r'\x830bd73e4184cef73443c15111a1df14e495c706':
+                    tar, title="LeagueDAO CommunityVault Contract", group=1)
+            elif tar == r'\x53986d9ab11e53d491840007b3935d8a94e4b04b':
                 net.add_node(
-                    tar, title="Nouns DAO: Nouns Auction House Proxy", group=2)
-            elif tar == r'\x0000000000000000000000000000000000000000':
+                    tar, title="LeagueDAO Rewards Contract", group=2)
+            elif tar == r'\x4708713b4b6bd32e41bcb2f9c5901d74fedba447':
                 net.add_node(
-                    tar, title="Nouns DAO Mint Event", group=3)
-            elif tar == r'\x2573c60a6d127755aa2dc85e342f7da2378a0cc5' or tar == r'\x2d7d54476738286552173b5957999664b9fbd467':
+                    tar, title="SushiSwap: LEAG-USDC", group=3)
+            elif tar == r'\x67f60da0f409ab8427e8a408efc4b137d0bd4e7b':
                 net.add_node(
-                    tar, title="Gnosis Safe Multisig Proxy Contract", group=4)
-            elif tar == r'\x83c8f28c26bf6aaca652df1dbbe0e1b56f8baba2':
+                    tar, title="LeagueDAO Kernel", group=4)
+            elif tar == r'\xe66b31678d6c16e9ebf358268a790b763c133750':
                 net.add_node(
-                    tar, title="Gem: Gemswap 2 Contract", group=5)
-            elif tar == r'\xb98efe56decceb1bec9faeeaf62500deb0953474':
+                    tar, title="0x: Coinbase Wallet Proxy", group=5)
+            elif tar == r'\x3f148612315aae2514ac630d6faf0d94b8cd8e33':
                 net.add_node(
-                    tar, title="Nouns DAO: PWNVault Contract", group=6)
-            elif tar == r'\xf896527c49b44aab3cf22ae356fa3af8e331f280':
+                    tar, title="LeagueDAO Staking Contract", group=6)
+            elif tar == r'\0x22f9dcf4647084d6c31b2765f6910cd85c178c18':
                 net.add_node(
-                    tar, title="Nouns DAO: DirectLoanFixedOffer Contract", group=7)
-            elif tar == r'\x9e3421274fb4053a83917d62bd368332e9e71fe0':
+                    tar, title="0x: Exchange Proxy Flash Wallet", group=7)
+            elif tar == r'\0xcbfc6e810186d9f1cd2f52a1afabcee5ae855a54':
                 net.add_node(
-                    tar, title="Blockchain Capital: Oracle DAO Rewards", group=8)
-            elif tar == r'\x91dccaa260cc4616e1a6e6b693db7207c5e42937':
+                    tar, title="LeagueDAO: Vesting Contract", group=8)
+            elif tar == r'\x981958fcd64058d296608b4604ebc7a0c3662254':
                 net.add_node(
-                    tar, title="Eth2 Depositor", group=9)
-            elif tar == r'\xd5f279ff9eb21c6d40c8f345a66f2751c4eea1fb':
+                    tar, title="LeagueDAO: TransparentUpgradeableProxy Contract", group=9)
+            elif tar == r'\x1f7683228ee9bc65335374ea5c92b81c74131404':
                 net.add_node(
-                    tar, title="NounsDAOExecutor Contract", group=10)
+                    tar, title="LeagueDAO: Proxy Contract", group=10)
             else:
                 net.add_node(tar, title=tar, group=0)
 
             net.add_edge(src, tar, title='Date: ' + str(dte) +
-                         '\n NFT DNA ID: ' + str(nft_id))
+                         '\n Amount: ' + str(amnt) + ' tokens')
 
         # Get adjacency list for graph
         neighbor_map = net.get_adj_list()
@@ -170,9 +170,9 @@ class Transaction_Graph:
         fro = data['address_from']
         to = data['address_to']
         date_time = data['date_time']
-        nft_id = data['id']
+        amount = data['amount']
 
-        edges_data = zip(fro, to, date_time, nft_id)
+        edges_data = zip(fro, to, date_time, amount)
 
         # Create the graph
         for e in edges_data:
