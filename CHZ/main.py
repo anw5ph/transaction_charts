@@ -2,7 +2,7 @@ from graph import Transaction_Graph
 import pandas as pd
 
 # Reads data from csv file
-fp = open("fwb_trans_data_1day_080822.csv", 'r')
+fp = open("chz_trans_data_1hour_080822.csv", 'r')
 fulllines = fp.readlines()
 lines = []
 for line in fulllines:
@@ -39,15 +39,17 @@ digraph = tg.create_graph(lines)
 # print("Degree of each node in the graph" + str(degree))
 
 # Read data in from csv and seperate data
-data = pd.read_csv('fwb_trans_data_1day_080822.csv')
+data = pd.read_csv('chz_trans_data_1hour_080822.csv')
 net1 = tg.create_pyvis_graph(data)
 net2 = tg.create_pyvis_graph_minus(
-    data, [r'\x9ab0905b39505d8682b58a57a41c4100e9c62ab6', r'\x0a965a4caf929338044c593d82d385c4c898d8c6', r'\xc36442b4a4522e871399cd717abdd847ab11fe88', r'\xe66b31678d6c16e9ebf358268a790b763c133750', r'\x00000000009726632680fb29d3f7a9734e3010e2'
+    data, [r'\x6cc5f688a315f3dc28a7781717a9a798a59fda7b', r'\x28c6c06298d514db089934071355e5743bf21d60', r'\x75e89d5979e4f6fba9f97c104c2f0afb3f1dcb88', r'\xb0f4a77bde7fee134265307c5cc19abff0ba409b', r'\x325365ed8275f6a74cac98917b7f6face8da533b',
+           r'\xff58711683be66dad6e0e20e0043af46fc7f5f49', r'\x0d0707963952f2fba59dd06f2b425ace40b492fe', r'\x5f65f7b609678448494de4c87521cdf6cef1e932', r'\x56eddb7aa87536c09ccc2793473599fd21a8b17f', r'\x9696f59e4d72e237be84ffd425dcad154bf96976',
+           r'\xdfd5293d8e347dfe59e90efd55b2956a1343963d', r'\x21a31ee1afc51d94c2efccaa2092ad1028285549'
            ])
 
 # Show the graph
-net1.show("fwb_trans_data_1day_080822.html")
-net2.show("fwb_trans_data_1day_minus_dex_080822.html")
+net1.show("chz_trans_data_1hour_080822.html")
+net2.show("chz_trans_data_1hour_minus_dex_080822.html")
 
 # Gets the frequencies of from addresses, to addresses, and both
 from_addy, to_addy, all_addy = tg.freq_of_addresses(lines)
@@ -60,7 +62,7 @@ df_from = pd.DataFrame({"From Address": sorted_from_dict.keys(),
                         "Frequency": sorted_from_dict.values()})
 
 # Exports dataframe to excel sheet
-df_from.to_excel(r'C:\Users\Student\transaction_graph\from_address_frequencies_1day_080822.xlsx',
+df_from.to_excel(r'C:\Users\Student\transaction_graph\from_address_frequencies_1hour_080822.xlsx',
                  index=False, header=True)
 
 # Sorts list of to addresses by frequency (descending)
@@ -72,7 +74,7 @@ df_to = pd.DataFrame({"To Address": sorted_to_dict.keys(),
                       "Frequency": sorted_to_dict.values()})
 
 # Exports dataframe to excel sheet
-df_to.to_excel(r'C:\Users\Student\transaction_graph\to_address_frequencies_1day_080822.xlsx',
+df_to.to_excel(r'C:\Users\Student\transaction_graph\to_address_frequencies_1hour_080822.xlsx',
                index=False, header=True)
 
 # Sorts list of from and to addresses by frequency (descending)
@@ -84,5 +86,5 @@ df_all = pd.DataFrame({"Address": sorted_all_dict.keys(),
                       "Frequency": sorted_all_dict.values()})
 
 # Exports dataframe to excel sheet
-df_all.to_excel(r'C:\Users\Student\transaction_graph\all_address_frequencies_1day_080822.xlsx',
+df_all.to_excel(r'C:\Users\Student\transaction_graph\all_address_frequencies_1hour_080822.xlsx',
                 index=False, header=True)

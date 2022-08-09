@@ -67,45 +67,85 @@ class Transaction_Graph:
             # Amount transferred
             amnt = e[3]
 
-            if src == r'\x9ab0905b39505d8682b58a57a41c4100e9c62ab6':
+            if src == r'\x6cc5f688a315f3dc28a7781717a9a798a59fda7b':
                 net.add_node(
-                    src, title="Uniswap V3: FWB", group=1)
-            elif src == r'\x0a965a4caf929338044c593d82d385c4c898d8c6':
+                    src, title="OKEx", group=1)
+            elif src == r'\x28c6c06298d514db089934071355e5743bf21d60':
                 net.add_node(
-                    src, title="Uniswap V2: FWB 2", group=2)
-            elif src == r'\x00000000c2cf7648c169b25ef1c217864bfa38cc':
+                    src, title="Binance 14", group=2)
+            elif src == r'\x75e89d5979e4f6fba9f97c104c2f0afb3f1dcb88':
                 net.add_node(
-                    src, title="MEV Bot", group=3)
-            elif src == r'\xc36442b4a4522e871399cd717abdd847ab11fe88':
+                    src, title="MEXC: Mexc.com", group=3)
+            elif src == r'\xb0f4a77bde7fee134265307c5cc19abff0ba409b':
                 net.add_node(
-                    src, title="Uniswap V3: Positions NFT", group=4)
-            elif src == r'\xe66b31678d6c16e9ebf358268a790b763c133750':
+                    src, title="Uniswap V3: CHZ-USDT", group=4)
+            elif src == r'\x325365ed8275f6a74cac98917b7f6face8da533b':
                 net.add_node(
-                    src, title="0x: Coinbase Wallet Proxy", group=5)
-            elif src == r'\x00000000009726632680fb29d3f7a9734e3010e2':
+                    src, title="Uniswap V3: CHZ", group=5)
+            elif src == r'\xff58711683be66dad6e0e20e0043af46fc7f5f49':
                 net.add_node(
-                    src, title="Rainbow: Router", group=6)
+                    src, title="Uniswap V2: CHZ 3", group=6)
+            elif src == r'\x0d0707963952f2fba59dd06f2b425ace40b492fe':
+                net.add_node(
+                    src, title="Gate.io", group=7)
+            elif src == r'\x5f65f7b609678448494de4c87521cdf6cef1e932':
+                net.add_node(
+                    src, title="Gemini 4", group=8)
+            elif src == r'\x98c3d3183c4b8a650614ad179a1a98be0a8d6b8e':
+                net.add_node(src, title="MEV Bot", group=9)
+            elif src == r'\x56eddb7aa87536c09ccc2793473599fd21a8b17f':
+                net.add_node(
+                    src, title="Binance 17", group=10)
+            elif src == r'\x9696f59e4d72e237be84ffd425dcad154bf96976':
+                net.add_node(
+                    src, title="Binance 18", group=11)
+            elif src == r'\xdfd5293d8e347dfe59e90efd55b2956a1343963d':
+                net.add_node(
+                    src, title="Binance 16", group=12)
+            elif src == r'\x21a31ee1afc51d94c2efccaa2092ad1028285549':
+                net.add_node(
+                    src, title="Binance 15", group=13)
             else:
                 net.add_node(src, title=src, group=0)
 
-            if tar == r'\x9ab0905b39505d8682b58a57a41c4100e9c62ab6':
+            if tar == r'\x6cc5f688a315f3dc28a7781717a9a798a59fda7b':
                 net.add_node(
-                    tar, title="Uniswap V3: FWB", group=1)
-            elif tar == r'\x0a965a4caf929338044c593d82d385c4c898d8c6':
+                    tar, title="OKEx", group=1)
+            elif tar == r'\x28c6c06298d514db089934071355e5743bf21d60':
                 net.add_node(
-                    tar, title="Uniswap V2: FWB 2", group=2)
-            elif tar == r'\x00000000c2cf7648c169b25ef1c217864bfa38cc':
+                    tar, title="Binance 14", group=2)
+            elif tar == r'\x75e89d5979e4f6fba9f97c104c2f0afb3f1dcb88':
                 net.add_node(
-                    tar, title="MEV Bot", group=3)
-            elif tar == r'\xc36442b4a4522e871399cd717abdd847ab11fe88':
+                    tar, title="MEXC: Mexc.com", group=3)
+            elif tar == r'\xb0f4a77bde7fee134265307c5cc19abff0ba409b':
                 net.add_node(
-                    tar, title="Uniswap V3: Positions NFT", group=4)
-            elif tar == r'\xe66b31678d6c16e9ebf358268a790b763c133750':
+                    tar, title="Uniswap V3: CHZ-USDT", group=4)
+            elif tar == r'\x325365ed8275f6a74cac98917b7f6face8da533b':
                 net.add_node(
-                    tar, title="0x: Coinbase Wallet Proxy", group=5)
-            elif tar == r'\x00000000009726632680fb29d3f7a9734e3010e2':
+                    tar, title="Uniswap V3: CHZ", group=5)
+            elif tar == r'\xff58711683be66dad6e0e20e0043af46fc7f5f49':
                 net.add_node(
-                    tar, title="Rainbow: Router", group=6)
+                    tar, title="Uniswap V2: CHZ 3", group=6)
+            elif tar == r'\x0d0707963952f2fba59dd06f2b425ace40b492fe':
+                net.add_node(
+                    tar, title="Gate.io", group=7)
+            elif tar == r'\x5f65f7b609678448494de4c87521cdf6cef1e932':
+                net.add_node(
+                    tar, title="Gemini 4", group=8)
+            elif tar == r'\x98c3d3183c4b8a650614ad179a1a98be0a8d6b8e':
+                net.add_node(tar, title="MEV Bot", group=9)
+            elif tar == r'\x56eddb7aa87536c09ccc2793473599fd21a8b17f':
+                net.add_node(
+                    tar, title="Binance 17", group=10)
+            elif tar == r'\x9696f59e4d72e237be84ffd425dcad154bf96976':
+                net.add_node(
+                    tar, title="Binance 18", group=11)
+            elif tar == r'\xdfd5293d8e347dfe59e90efd55b2956a1343963d':
+                net.add_node(
+                    tar, title="Binance 16", group=12)
+            elif tar == r'\x21a31ee1afc51d94c2efccaa2092ad1028285549':
+                net.add_node(
+                    tar, title="Binance 15", group=13)
             else:
                 # print(tar)
                 net.add_node(tar, title=tar, group=0)
