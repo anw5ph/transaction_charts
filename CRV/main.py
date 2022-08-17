@@ -1,8 +1,9 @@
 from graph import Transaction_Graph
 import pandas as pd
+import json
 
 # Reads data from csv file
-fp = open("crv_trans_data_1hour_080522.csv", 'r')
+fp = open("CRV/08052022/1hour/crv_trans_data_1hour_080522.csv", 'r')
 fulllines = fp.readlines()
 lines = []
 for line in fulllines:
@@ -11,8 +12,8 @@ for line in fulllines:
 # # Creates object instance of Transaction_Graph
 tg = Transaction_Graph()
 digraph = tg.create_graph(lines)
-# num_nodes, num_edges, num_self, strong_comp, dens, greedy, degree = tg.perform_calculations(
-#     digraph)
+num_nodes, num_edges, num_self, strong_comp, dens, greedy, degree = tg.perform_calculations(
+    digraph)
 
 # Calculates number of nodes
 # print("Number of nodes in graph: " + str(num_nodes))
@@ -38,8 +39,20 @@ digraph = tg.create_graph(lines)
 # # Calculates the degree of each node in the graph
 # print("Degree of each node in the graph" + str(degree))
 
+x = {
+    "num_node": num_nodes,
+    "num_edge": num_edges,
+    "num_self_loops": num_self,
+    "num_conn_comp": strong_comp,
+    "density": dens,
+}
+
+y = json.dumps(x)
+with open('crv.json', 'w') as f:
+    json.dump(y, f, ensure_ascii=False)
+
 # Read data in from csv and seperate data
-data = pd.read_csv('crv_trans_data_1hour_080522.csv')
+data = pd.read_csv('CRV/08052022/1hour/crv_trans_data_1hour_080522.csv')
 net1 = tg.create_pyvis_graph(data)
 net2 = tg.create_pyvis_graph_minus(
     data, [r'\xf403c135812408bfbe8713b5a23a04b3d48aae31', r'\x989aeb4d175e16225e39e87d0d97a3360524ad80', r'\x8301ae4fc9c624d1d396cbdaa1ed877821d7c511', r'\x3fe65692bfcd0e6cf84cb1e7d24108e434a7587e', r'\x0000000000000000000000000000000000000000',
@@ -50,8 +63,8 @@ net2 = tg.create_pyvis_graph_minus(
            ])
 
 # Show the graph
-net1.show("crv_trans_data_1hour_080522.html")
-net2.show("crv_trans_data_1hour_minus_dex_080522.html")
+# net1.show("crv_trans_data_1hour_080522.html")
+# net2.show("crv_trans_data_1hour_minus_dex_080522.html")
 
 # Gets the frequencies of from addresses, to addresses, and both
 from_addy, to_addy, all_addy = tg.freq_of_addresses(lines)
