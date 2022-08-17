@@ -47,10 +47,10 @@ class Transaction_Graph:
         date_time = data['date_time']
 
         # List of token amounts involved in transaction (3rd column)
-        amount = data['amount']
+        nft_id = data['id']
 
         # Combines data into matrix
-        edges_data = zip(fro, to, amount, date_time)
+        edges_data = zip(fro, to, date_time, nft_id)
 
         # Iterate through all elements in the matrix
         for e in edges_data:
@@ -62,169 +62,79 @@ class Transaction_Graph:
             tar = e[1]
 
             # Date time stamp of transaction
-            amnt = e[2]
+            dte = e[2]
 
             # Amount transferred
-            dte = e[3]
+            nft_id = e[3]
 
-            if src == r'\x231a07c825f052b895de5fd1513ce40d18e14af5':
+            if src == r'\x0bc3807ec262cb779b38d65b38158acc3bfede10':
                 net.add_node(
-                    src, title=src, group=1)
-            elif src == r'\x020ca66c30bec2c4fe3861a94e4db4a498a35872':
+                    src, title="Nouns DAO: Treasury", group=1)
+            elif src == r'\x830bd73e4184cef73443c15111a1df14e495c706':
                 net.add_node(
-                    src, title=src, group=2)
-            elif src == r'\xb1c41c71d36cedea7ddcd5f8d5c5c32ba8f3cbfc':
+                    src, title="Nouns DAO: Nouns Auction House Proxy", group=2)
+            elif src == r'\x0000000000000000000000000000000000000000':
                 net.add_node(
-                    src, title=src, group=3)
-            elif src == r'\x2f8ab52fc3b40cef63ccc25f96d2dcf6b7a2b735':
+                    src, title="Nouns DAO Mint Event", group=3)
+            elif src == r'\x2573c60a6d127755aa2dc85e342f7da2378a0cc5' or src == r'\x2d7d54476738286552173b5957999664b9fbd467':
                 net.add_node(
-                    src, title=src, group=4)
-            elif src == r'\x177751396d8236569c5c7b04232c7b7281a3b9f3':
+                    src, title="Gnosis Safe Multisig Proxy Contract", group=4)
+            elif src == r'\x83c8f28c26bf6aaca652df1dbbe0e1b56f8baba2':
                 net.add_node(
-                    src, title=src, group=5)
-            elif src == r'\xf1544ba9a1ad3c8c8b507de3e1f5243c3697e367':
+                    src, title="Gem: Gemswap 2 Contract", group=5)
+            elif src == r'\xb98efe56decceb1bec9faeeaf62500deb0953474':
                 net.add_node(
-                    src, title=src, group=6)
-            elif src == r'\xe26d78c6bff297bbc2da3f80fea9a42028a4260f':
+                    src, title="Nouns DAO: PWNVault Contract", group=6)
+            elif src == r'\xf896527c49b44aab3cf22ae356fa3af8e331f280':
                 net.add_node(
-                    src, title=src, group=7)
-            elif src == r'\x9e2003d83e63d09432b5b1d7af22cf7b6c5b84a9':
+                    src, title="Nouns DAO: DirectLoanFixedOffer Contract", group=7)
+            elif src == r'\x9e3421274fb4053a83917d62bd368332e9e71fe0':
                 net.add_node(
-                    src, title=src, group=8)
-            elif src == r'\x4754b7e3dede42d71d6c92978f25f306176ec7e9':
+                    src, title="Blockchain Capital: Oracle DAO Rewards", group=8)
+            elif src == r'\x91dccaa260cc4616e1a6e6b693db7207c5e42937':
                 net.add_node(
-                    src, title=src, group=9)
-            elif src == r'\x7fa020f063b3a06153ed755cee5923039efb86a3':
-                net.add_node(
-                    src, title=src, group=10)
-            elif src == r'\xf476cd75be8fdd197ae0b466a2ec2ae44da41897':
-                net.add_node(
-                    src, title=src, group=11)
-            elif src == r'\x2573c60a6d127755aa2dc85e342f7da2378a0cc5':
-                net.add_node(
-                    src, title=src, group=12)
-            elif src == r'\xf6b6f07862a02c85628b3a9688beae07fea9c863':
-                net.add_node(
-                    src, title=src, group=13)
-            elif src == r'\x6d40c2da94c6522e361904383c37c605f39b8e73':
-                net.add_node(
-                    src, title=src, group=14)
-            elif src == r'\xf55c66079a5c5c2774400dd8b8e82a2d0ae0774e':
-                net.add_node(
-                    src, title=src, group=15)
-            elif src == r'\xae7f458667f1b30746354abc3157907d9f6fd15e':
-                net.add_node(
-                    src, title=src, group=16)
+                    src, title="Eth2 Depositor", group=9)
             elif src == r'\xd5f279ff9eb21c6d40c8f345a66f2751c4eea1fb':
                 net.add_node(
-                    src, title=src, group=17)
-            elif src == r'\xb88f61e6fbda83fbfffabe364112137480398018':
-                net.add_node(
-                    src, title=src, group=18)
-            elif src == r'\x9290745a459a476e5a73f0c49276139a5aef2a84':
-                net.add_node(
-                    src, title=src, group=19)
-            elif src == r'\x008c84421da5527f462886cec43d2717b686a7e4':
-                net.add_node(
-                    src, title=src, group=20)
-            elif src == r'\xba93a6acac634551d49c5aab0f7a0eb2a6bd00a8':
-                net.add_node(
-                    src, title=src, group=21)
-            elif src == r'\xd049b3064990869c9f73bd7896271d83325d2067':
-                net.add_node(
-                    src, title=src, group=22)
-            elif src == r'\xa8b4367f09e63a5234abd14f5ef6868b1aed0e7d':
-                net.add_node(
-                    src, title=src, group=23)
-            elif src == r'\x87757c7fd54d892176e9ecec6767bc16e04a06a8':
-                net.add_node(
-                    src, title=src, group=24)
-            elif src == r'\xf8a065f287d91d77cd626af38ffa220d9b552a2b':
-                net.add_node(
-                    src, title=src, group=25)
+                    src, title="NounsDAOExecutor Contract", group=10)
             else:
                 net.add_node(src, title=src, group=0)
 
-            if tar == r'\x231a07c825f052b895de5fd1513ce40d18e14af5':
+            if tar == r'\x0bc3807ec262cb779b38d65b38158acc3bfede10':
                 net.add_node(
-                    tar, title=tar, group=1)
-            elif tar == r'\x020ca66c30bec2c4fe3861a94e4db4a498a35872':
+                    tar, title="Nouns DAO: Treasury", group=1)
+            elif tar == r'\x830bd73e4184cef73443c15111a1df14e495c706':
                 net.add_node(
-                    tar, title=tar, group=2)
-            elif tar == r'\xb1c41c71d36cedea7ddcd5f8d5c5c32ba8f3cbfc':
+                    tar, title="Nouns DAO: Nouns Auction House Proxy", group=2)
+            elif tar == r'\x0000000000000000000000000000000000000000':
                 net.add_node(
-                    tar, title=tar, group=3)
-            elif tar == r'\x2f8ab52fc3b40cef63ccc25f96d2dcf6b7a2b735':
+                    tar, title="Nouns DAO Mint Event", group=3)
+            elif tar == r'\x2573c60a6d127755aa2dc85e342f7da2378a0cc5' or tar == r'\x2d7d54476738286552173b5957999664b9fbd467':
                 net.add_node(
-                    tar, title=tar, group=4)
-            elif tar == r'\x177751396d8236569c5c7b04232c7b7281a3b9f3':
+                    tar, title="Gnosis Safe Multisig Proxy Contract", group=4)
+            elif tar == r'\x83c8f28c26bf6aaca652df1dbbe0e1b56f8baba2':
                 net.add_node(
-                    tar, title=tar, group=5)
-            elif tar == r'\xf1544ba9a1ad3c8c8b507de3e1f5243c3697e367':
+                    tar, title="Gem: Gemswap 2 Contract", group=5)
+            elif tar == r'\xb98efe56decceb1bec9faeeaf62500deb0953474':
                 net.add_node(
-                    tar, title=tar, group=6)
-            elif tar == r'\xe26d78c6bff297bbc2da3f80fea9a42028a4260f':
+                    tar, title="Nouns DAO: PWNVault Contract", group=6)
+            elif tar == r'\xf896527c49b44aab3cf22ae356fa3af8e331f280':
                 net.add_node(
-                    tar, title=tar, group=7)
-            elif tar == r'\x9e2003d83e63d09432b5b1d7af22cf7b6c5b84a9':
+                    tar, title="Nouns DAO: DirectLoanFixedOffer Contract", group=7)
+            elif tar == r'\x9e3421274fb4053a83917d62bd368332e9e71fe0':
                 net.add_node(
-                    tar, title=tar, group=8)
-            elif tar == r'\x4754b7e3dede42d71d6c92978f25f306176ec7e9':
+                    tar, title="Blockchain Capital: Oracle DAO Rewards", group=8)
+            elif tar == r'\x91dccaa260cc4616e1a6e6b693db7207c5e42937':
                 net.add_node(
-                    tar, title=tar, group=9)
-            elif tar == r'\x7fa020f063b3a06153ed755cee5923039efb86a3':
-                net.add_node(
-                    tar, title=tar, group=10)
-            elif tar == r'\xf476cd75be8fdd197ae0b466a2ec2ae44da41897':
-                net.add_node(
-                    tar, title=tar, group=11)
-            elif tar == r'\x2573c60a6d127755aa2dc85e342f7da2378a0cc5':
-                net.add_node(
-                    tar, title=tar, group=12)
-            elif tar == r'\xf6b6f07862a02c85628b3a9688beae07fea9c863':
-                net.add_node(
-                    tar, title=tar, group=13)
-            elif tar == r'\x6d40c2da94c6522e361904383c37c605f39b8e73':
-                net.add_node(
-                    tar, title=tar, group=14)
-            elif tar == r'\xf55c66079a5c5c2774400dd8b8e82a2d0ae0774e':
-                net.add_node(
-                    tar, title=tar, group=15)
-            elif tar == r'\xae7f458667f1b30746354abc3157907d9f6fd15e':
-                net.add_node(
-                    tar, title=tar, group=16)
+                    tar, title="Eth2 Depositor", group=9)
             elif tar == r'\xd5f279ff9eb21c6d40c8f345a66f2751c4eea1fb':
                 net.add_node(
-                    tar, title=tar, group=17)
-            elif tar == r'\xb88f61e6fbda83fbfffabe364112137480398018':
-                net.add_node(
-                    tar, title=tar, group=18)
-            elif tar == r'\x9290745a459a476e5a73f0c49276139a5aef2a84':
-                net.add_node(
-                    tar, title=tar, group=19)
-            elif tar == r'\x008c84421da5527f462886cec43d2717b686a7e4':
-                net.add_node(
-                    tar, title=tar, group=20)
-            elif tar == r'\xba93a6acac634551d49c5aab0f7a0eb2a6bd00a8':
-                net.add_node(
-                    tar, title=tar, group=21)
-            elif tar == r'\xd049b3064990869c9f73bd7896271d83325d2067':
-                net.add_node(
-                    tar, title=tar, group=22)
-            elif tar == r'\xa8b4367f09e63a5234abd14f5ef6868b1aed0e7d':
-                net.add_node(
-                    tar, title=tar, group=23)
-            elif tar == r'\x87757c7fd54d892176e9ecec6767bc16e04a06a8':
-                net.add_node(
-                    tar, title=tar, group=24)
-            elif tar == r'\xf8a065f287d91d77cd626af38ffa220d9b552a2b':
-                net.add_node(
-                    tar, title=tar, group=25)
+                    tar, title="NounsDAOExecutor Contract", group=10)
             else:
                 net.add_node(tar, title=tar, group=0)
 
             net.add_edge(src, tar, title='Date: ' + str(dte) +
-                         '\n Amount: ' + str(amnt))
+                         '\n NFT DNA ID: ' + str(nft_id))
 
         # Get adjacency list for graph
         neighbor_map = net.get_adj_list()
